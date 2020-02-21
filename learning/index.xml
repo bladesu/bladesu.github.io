@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Collections of my learning notes. on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/learning/</link>
+    <description>Recent content in Collections of my learning notes. on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="https://bladesu.github.io/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
