@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Blade Su">
+    <meta name="description" content="Reading, learning, and self-Satisfaction">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Coding in C, C standard should be most reliable reference material than everything."/>
+<meta name="twitter:description" content="A story about answer finding in c coding. Finally, you will find definition and description in C standard should be most valuable than other extended ones or personal guessing."/>
+
+    <meta property="og:title" content="Coding in C, C standard should be most reliable reference material than everything." />
+<meta property="og:description" content="A story about answer finding in c coding. Finally, you will find definition and description in C standard should be most valuable than other extended ones or personal guessing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bladesu.github.io/posts/2020/03/03/standard_is_most_important_in_c/" />
+<meta property="article:published_time" content="2020-03-03T22:22:27+08:00" />
+<meta property="article:modified_time" content="2020-03-03T22:22:27+08:00" />
+
+
+    
+      <base href="https://bladesu.github.io/posts/2020/03/03/standard_is_most_important_in_c/">
+    
+    <title>
+  Coding in C, C standard should be most reliable reference material than everything. · Blade Su The Coder
+</title>
+
+    
+      <link rel="canonical" href="https://bladesu.github.io/posts/2020/03/03/standard_is_most_important_in_c/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://bladesu.github.io/css/coder.min.ab11da33926aff1bbed738198c81361e84bf702098a3e97ed5b24126bde6c9ba.css" integrity="sha256-qxHaM5Jq/xu&#43;1zgZjIE2HoS/cCCYo&#43;l&#43;1bJBJr3mybo=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://bladesu.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.64.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://bladesu.github.io/">
+      Blade Su The Coder
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/learning/">Learning</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Coding in C, C standard should be most reliable reference material than everything.</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-03T22:22:27&#43;08:00'>
+                March 3, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3-minute read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="https://bladesu.github.io/categories/c-language/">c language</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Recently, I start to code a lot in c language. One of my studying
+material is &ldquo;Head First C&rdquo; written by David Griffith. And I am so confused about an example it talking about XOR encrption.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">void</span> encrpt(<span style="color:#fff;font-weight:bold">char</span> *mes)
+{
+    <span style="color:#fff;font-weight:bold">while</span> (*mes) {
+        *mes = *mes ^ <span style="color:#ff0;font-weight:bold">31</span>;
+        mes++; }
+    }
+}
+</code></pre></div><p>This code could be compiled without any error or warning (Apple LLVM version 9.1.0 (clang-902.0.39.1)). But I am really curious about how XOR operator worker on the two operand <strong>*mes</strong> and the integer literal <strong>31</strong>. So I write a test code to show the binary format of two operands to understand the behavior. (<a href="https://github.com/bladesu/c_practices/blob/master/src/basic/bitwise_op.c">https://github.com/bladesu/c_practices/blob/master/src/basic/bitwise_op.c</a>)</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">void</span> print_bit(<span style="color:#fff;font-weight:bold">void</span> *<span style="color:#fff;font-weight:bold">const</span> obj, <span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">const</span> bit_size)
+{
+    <span style="color:#007f7f">// For bitwise AND operator,
+</span><span style="color:#007f7f"></span>    <span style="color:#007f7f">// the each of operands shall have integer type according to C99 standard (6.5.10) 
+</span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">int</span> *x = obj;
+    <span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">long</span> leftest = <span style="color:#ff0;font-weight:bold">8</span> * bit_size;
+    <span style="color:#fff;font-weight:bold">while</span> (leftest &gt; <span style="color:#ff0;font-weight:bold">0</span>)
+    {
+        leftest--;
+        (*x &amp; (<span style="color:#ff0;font-weight:bold">1</span> &lt;&lt; leftest)) ? putchar(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">1</span><span style="color:#0ff;font-weight:bold">&#39;</span>) : putchar(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">0</span><span style="color:#0ff;font-weight:bold">&#39;</span>);
+        <span style="color:#fff;font-weight:bold">if</span> (!(leftest % <span style="color:#ff0;font-weight:bold">8</span>))
+            putchar(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold"> </span><span style="color:#0ff;font-weight:bold">&#39;</span>);
+    }
+    putchar(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#39;</span>);
+}
+</code></pre></div><p>In this function, a pointer was introduced by argument <strong>void *obj</strong>. And it was taken as pointer to unsigned integer. Then the second argument <strong>bit_size</strong> is given as bit size which is also the location of leftest digital of the type. It should be noted that the iteraly-print part.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">(*x &amp; (1 &lt;&lt; leftest)) ? putchar(&#39;1&#39;) : putchar(&#39;0&#39;);
+</code></pre></div><p>It applies <strong>bit-wise AND operator(&amp;)</strong> onto operands <strong>*x</strong> and <strong>(1 &laquo; leftest)</strong>, and print <strong>1</strong> or <strong>0</strong> char by char. In my older version, <strong>*x</strong> is defined by <strong>unsigned long long</strong>, becase I thought it should take a longest data type to accept the <strong>*obj</strong>, and <strong>bit_size</strong> as the role to shrink the requested range. However the result is wrong, I do not want to talk about how it be wrong now. Here I want to talk about the referenced material. I had read a lot of example code from the some googled article and forum. None of them use <strong>unsigned long long *</strong>, alternatively they use <strong>unsigned char</strong>, <strong>unsigned int</strong> or <strong>int</strong>. It confused me more, how could they be right in the same time. They even do not have same bit size! Finally I go to read the holy C99 standard(I refer to this one: Committee Draft — Septermber 7, 2007 ISO/IEC 9899:TC3).</p>
+<p>In sections <em><strong>6.5.10</strong></em> and <em><strong>6.5.11</strong></em>, each of the operands shall have integer type for <strong>bitwise AND operator</strong> and <strong>bitwise exclusive OR operator</strong> and . We should know all C compiler should follow the C standard. In most case, we should avoid invalid syntax usage to result in unexpected behavior. In other words, we should not consider the codes with non-integer type operand bitwise operation. Finally, we should always take definition and description in C standard as most valuable material than other extended ones or personal guessing.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-bladesu-github-io-tech-blog-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>See the trend, stay calm.</p>
+    
+    
+      
+        © 2020
+      
+       Blade Su 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>

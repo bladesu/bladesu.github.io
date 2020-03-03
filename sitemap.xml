@@ -4,7 +4,27 @@
   
   <url>
     <loc>https://bladesu.github.io/</loc>
-    <lastmod>2020-02-21T15:43:19+08:00</lastmod>
+    <lastmod>2020-03-03T22:22:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/categories/c-language/</loc>
+    <lastmod>2020-03-03T22:22:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/categories/</loc>
+    <lastmod>2020-03-03T22:22:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/posts/2020/03/03/standard_is_most_important_in_c/</loc>
+    <lastmod>2020-03-03T22:22:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/posts/</loc>
+    <lastmod>2020-03-03T22:22:27+08:00</lastmod>
   </url>
   
   <url>
@@ -13,17 +33,12 @@
   </url>
   
   <url>
-    <loc>https://bladesu.github.io/learning/c_lang/chapters/temp/</loc>
-    <lastmod>2020-02-21T15:43:19+08:00</lastmod>
+    <loc>https://bladesu.github.io/learning/c_lang/temp/</loc>
+    <lastmod>2020-02-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/tags/about_me/</loc>
-    <lastmod>2020-02-19T18:56:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/categories/</loc>
     <lastmod>2020-02-19T18:56:57+08:00</lastmod>
   </url>
   
@@ -34,11 +49,6 @@
   
   <url>
     <loc>https://bladesu.github.io/posts/2020/02/19/my-first-post/</loc>
-    <lastmod>2020-02-19T18:56:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/posts/</loc>
     <lastmod>2020-02-19T18:56:57+08:00</lastmod>
   </url>
   

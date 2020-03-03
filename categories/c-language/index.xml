@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Blade Su The Coder</title>
-    <link>https://bladesu.github.io/posts/</link>
-    <description>Recent content in Posts on Blade Su The Coder</description>
+    <title>c language on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/categories/c-language/</link>
+    <description>Recent content in c language on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 03 Mar 2020 22:22:27 +0800</lastBuildDate>
     
-	<atom:link href="https://bladesu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bladesu.github.io/categories/c-language/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,17 +19,6 @@
       <guid>https://bladesu.github.io/posts/2020/03/03/standard_is_most_important_in_c/</guid>
       <description>Recently, I start to code a lot in c language. One of my studying material is &amp;ldquo;Head First C&amp;rdquo; written by David Griffith. And I am so confused about an example it talking about XOR encrption.
 void encrpt(char *mes) { while (*mes) { *mes = *mes ^ 31; mes++; } } } This code could be compiled without any error or warning (Apple LLVM version 9.1.0 (clang-902.0.39.1)). But I am really curious about how XOR operator worker on the two operand *mes and the integer literal 31.</description>
-    </item>
-    
-    <item>
-      <title>My first post</title>
-      <link>https://bladesu.github.io/posts/2020/02/19/my-first-post/</link>
-      <pubDate>Wed, 19 Feb 2020 18:56:57 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/posts/2020/02/19/my-first-post/</guid>
-      <description>Thank you for reading this post. This is the first one in my blog.
-Since I had connected to internect, I got a lot of knowlege from enormous amount of website. However it really hard to digest and organize all of them.
-So I start this blog to put my idea and information collected. If I take something wrong, or you gain from something here. Please give me feedback, thank you.</description>
     </item>
     
   </channel>

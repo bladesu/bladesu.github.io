@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Feb 2020 18:56:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 22:22:27 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>c language</title>
+      <link>https://bladesu.github.io/categories/c-language/</link>
+      <pubDate>Tue, 03 Mar 2020 22:22:27 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/categories/c-language/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>milestone</title>
