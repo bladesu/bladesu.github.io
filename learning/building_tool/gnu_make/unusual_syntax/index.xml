@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unusual syntax for newcomer on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/</link>
+    <description>Recent content in Unusual syntax for newcomer on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 04 Mar 2020 21:33:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Outline</title>
+      <link>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/outline/</link>
+      <pubDate>Wed, 04 Mar 2020 22:00:41 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/outline/</guid>
+      <description>Here I will continously update some contents about sytanx in GNU make which is uncommon I think or ones is not eaily understood by intuition. If you have interesting about that, you will gain big benefit from reading the document(https://www.gnu.org/software/make/manual/make.html).
+Automatic Variables The Automatic variables feature of GUN make allow you have variable whose value computed afresh for each rule that is executed in the runtime.
+$@ and $&amp;lt; pair </description>
+    </item>
+    
+    <item>
+      <title>Automatic Variables: $@ and $&lt; pair</title>
+      <link>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/auto_var_1/</link>
+      <pubDate>Wed, 04 Mar 2020 20:36:41 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/auto_var_1/</guid>
+      <description>note:  $@ is the file name of the target of the rule. Also it apply the pattern rules for multiple files. $&amp;lt; is the name of the first prerequiste. It also follow the implicit rule. $@ can not be used within the prerequisites list except secondary expansion feature is applied  case study *.o: *.c dependency.h gcc -c -o $@ $&amp;lt; -I. In this case, I define the rule that if each file suffixed with .</description>
+    </item>
+    
+  </channel>
+</rss>
