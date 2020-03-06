@@ -13,16 +13,16 @@
 <meta name="twitter:title" content="Outline"/>
 <meta name="twitter:description" content="Here I will continously update some contents about sytanx in GNU make which is uncommon I think or ones is not eaily understood by intuition. If you have interesting about that, you will gain big benefit from reading the document(https://www.gnu.org/software/make/manual/make.html).
 Automatic Variables The Automatic variables feature of GUN make allow you have variable whose value computed afresh for each rule that is executed in the runtime.
-$@ and $&lt; pair "/>
+$@ and $&lt; pair  Static Pattern Rules Cited from documentation(4."/>
 
     <meta property="og:title" content="Outline" />
 <meta property="og:description" content="Here I will continously update some contents about sytanx in GNU make which is uncommon I think or ones is not eaily understood by intuition. If you have interesting about that, you will gain big benefit from reading the document(https://www.gnu.org/software/make/manual/make.html).
 Automatic Variables The Automatic variables feature of GUN make allow you have variable whose value computed afresh for each rule that is executed in the runtime.
-$@ and $&lt; pair " />
+$@ and $&lt; pair  Static Pattern Rules Cited from documentation(4." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/outline/" />
-<meta property="article:published_time" content="2020-03-04T22:00:41+08:00" />
-<meta property="article:modified_time" content="2020-03-04T22:00:41+08:00" />
+<meta property="article:published_time" content="2020-03-06T23:33:27+08:00" />
+<meta property="article:modified_time" content="2020-03-06T23:33:27+08:00" />
 
 
     
@@ -125,8 +125,8 @@ $@ and $&lt; pair " />
           <div class="date">
             <span class="posted-on">
               <i class="fas fa-calendar"></i>
-              <time datetime='2020-03-04T22:00:41&#43;08:00'>
-                March 4, 2020
+              <time datetime='2020-03-06T23:33:27&#43;08:00'>
+                March 6, 2020
               </time>
             </span>
             <span class="reading-time">
@@ -144,8 +144,18 @@ $@ and $&lt; pair " />
         <p>Here I will continously update some contents about sytanx in <strong>GNU make</strong> which is uncommon I think or ones is not eaily understood by intuition. If you have interesting about that, you will gain big benefit from reading the document(<a href="https://www.gnu.org/software/make/manual/make.html">https://www.gnu.org/software/make/manual/make.html</a>).</p>
 <h2 id="automatic-variables">Automatic Variables</h2>
 <p>The <strong>Automatic variables</strong> feature of <strong>GUN make</strong> allow you have variable whose value computed afresh for each rule that is executed in the runtime.</p>
-<h3 id="-and--pairhahahugoshortcode-s0-hbhb"><a href="https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/auto_var_1/">$@ and $&lt; pair</a></h3>
-
+<h4 id="-and--pairhahahugoshortcode-s0-hbhb"><a href="https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/auto_var_1/">$@ and $&lt; pair</a></h4>
+<hr>
+<h2 id="static-pattern-rules">Static Pattern Rules</h2>
+<p>Cited from documentation(4.12):</p>
+<blockquote>
+<p>Static pattern rules are rules which specify multiple targets and construct the prerequisite names for each target based on the target name. They are more general than ordinary rules with multiple targets because the targets do not have to have identical prerequisites. Their prerequisites must be analogous, but not necessarily identical.</p>
+</blockquote>
+<h4 id="syntax-of-static-pattern-ruleshahahugoshortcode-s1-hbhb"><a href="https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/static_pattern_rules/">Syntax of Static Pattern Rules</a></h4>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">targets …: target-pattern: prereq-patterns …
+        recipe
+        …
+</code></pre></div>
       </div>
 
 
