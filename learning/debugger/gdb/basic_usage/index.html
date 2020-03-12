@@ -11,10 +11,14 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Basic_usage"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="First: Add debug option when compiling.  GDB needs the debugging information provided by compiler. The debugger option should be on when generating object file for code line number or others.
+For C language compiled by GCC: In general, use -g option, according to GCC documentation:
+ -g Produce debugging information in the operating system&rsquo;s native format (stabs, COFF, XCOFF, or DWARF 2). GDB can work with this debugging information."/>
 
     <meta property="og:title" content="Basic_usage" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="First: Add debug option when compiling.  GDB needs the debugging information provided by compiler. The debugger option should be on when generating object file for code line number or others.
+For C language compiled by GCC: In general, use -g option, according to GCC documentation:
+ -g Produce debugging information in the operating system&rsquo;s native format (stabs, COFF, XCOFF, or DWARF 2). GDB can work with this debugging information." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bladesu.github.io/learning/debugger/gdb/basic_usage/" />
 <meta property="article:published_time" content="2020-03-12T16:30:55+08:00" />
@@ -127,7 +131,7 @@
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              0-minute read
+              4-minute read
             </span>
           </div>
           
@@ -137,7 +141,118 @@
 
       <div>
         
-        
+        <h1 id="first-add-debug-option-when-compiling">First: Add debug option when compiling.</h1>
+<hr>
+<p>GDB needs the debugging information provided by compiler. The debugger option should be on when generating object file for code line number or others.</p>
+<h3 id="for-c-language-compiled-by-gcc">For C language compiled by GCC:</h3>
+<p>In general, use -g option, according to GCC documentation:</p>
+<blockquote>
+<p><strong>-g</strong> Produce debugging information in the operating system&rsquo;s native format (stabs, COFF, XCOFF, or DWARF 2). <strong>GDB</strong> can work with this debugging information.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># To build a object file: obj.o from src.c</span>
+gcc -g -c -o obj.o src.c
+<span style="color:#007f7f"># To build executable file: program.exe from src.c</span>
+gcc -g -o program.exe src.c
+
+</code></pre></div><hr>
+<h1 id="run-gdb-with-executable-program">Run GDB with executable program.</h1>
+<p>For a compiled program: progrom.exe. We can run GDB onto it, then set a break point and run.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># For a executable program: program.exe</span>
+gdb program.exe
+</code></pre></div><p>Above operation will start GDB, and you will see a cursor waiting for typing behind following info:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Copyright (C) <span style="color:#ff0;font-weight:bold">2014</span> Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version <span style="color:#ff0;font-weight:bold">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type <span style="color:#0ff;font-weight:bold">&#34;show copying&#34;</span>
+and <span style="color:#0ff;font-weight:bold">&#34;show warranty&#34;</span> <span style="color:#fff;font-weight:bold">for</span> details.
+This GDB was configured as <span style="color:#0ff;font-weight:bold">&#34;x86_64-linux-gnu&#34;</span>.
+Type <span style="color:#0ff;font-weight:bold">&#34;show configuration&#34;</span> <span style="color:#fff;font-weight:bold">for</span> configuration details.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+For help, <span style="color:#fff;font-weight:bold">type</span> <span style="color:#0ff;font-weight:bold">&#34;help&#34;</span>.
+Type <span style="color:#0ff;font-weight:bold">&#34;apropos word&#34;</span> to search <span style="color:#fff;font-weight:bold">for</span> commands related to <span style="color:#0ff;font-weight:bold">&#34;word&#34;</span>...
+Reading symbols from bin/example_1...done.
+&gt;&gt;&gt;   
+</code></pre></div><p>Currently the process of the program is not executed yet until type &ldquo;run&rdquo; and execute in the GDB console. However, a break pointer should be set before &ldquo;run&rdquo; the process. Here I set break point on the main entry in a C code.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007f7f">/* Content of example_1.c */</span>
+<span style="color:#fff;font-weight:bold">int</span> main(<span style="color:#fff;font-weight:bold">int</span> argc, <span style="color:#fff;font-weight:bold">char</span> *argv[])
+{
+    <span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">int</span> i = <span style="color:#ff0;font-weight:bold">0</span>;
+    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+}
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># Set break point and run in GDB console.</span>
+&gt;&gt;&gt; <span style="color:#fff;font-weight:bold">break</span> main
+Breakpoint <span style="color:#ff0;font-weight:bold">1</span> at 0x4004f8: file example_1.c, line 3.
+&gt;&gt;&gt; run
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># Running GDB with GDB dashboard.</span>
+─── Output/messages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Breakpoint 1, main (argc=1, argv=0x7ffe4bd325c8) at example_1.c:3
+<span style="color:#ff0;font-weight:bold">3</span>           unsigned int i = 0;
+─── Assembly ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+~
+ 0x00000000004004ed  main+0  push   %rbp
+ 0x00000000004004ee  main+1  mov    %rsp,%rbp
+ 0x00000000004004f1  main+4  mov    %edi,-0x14(%rbp)
+ 0x00000000004004f4  main+7  mov    %rsi,-0x20(%rbp)
+!0x00000000004004f8  main+11 movl   $0x0,-0x4(%rbp)
+ 0x00000000004004ff  main+18 mov    $0x0,%eax
+ 0x0000000000400504  main+23 pop    %rbp
+ 0x0000000000400505  main+24 retq   
+~
+─── Breakpoints ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1] <span style="color:#fff;font-weight:bold">break</span> at 0x00000000004004f8 in example_1.c:3 <span style="color:#fff;font-weight:bold">for</span> main hit <span style="color:#ff0;font-weight:bold">1</span> <span style="color:#fff;font-weight:bold">time</span>
+─── Expressions ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─── History ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─── Memory ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─── Registers ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+        rax 0x00000000004004ed           rbx 0x0000000000000000        rcx 0x0000000000000000        rdx 0x00007ffe4bd325d8
+        rsi 0x00007ffe4bd325c8           rdi 0x0000000000000001        rbp 0x00007ffe4bd324e0        rsp 0x00007ffe4bd324e0
+         r8 0x00007f4e7949ee80            r9 0x00007f4e794b4600        r10 0x00007ffe4bd32370        r11 0x00007f4e790fce50
+        r12 0x0000000000400400           r13 0x00007ffe4bd325c0        r14 0x0000000000000000        r15 0x0000000000000000
+        rip 0x00000000004004f8        eflags [ PF ZF IF ]               cs 0x00000033                 ss 0x0000002b        
+         ds 0x00000000                    es 0x00000000                 fs 0x00000000                 gs 0x00000000        
+─── Source ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+~
+~
+~
+ <span style="color:#ff0;font-weight:bold">1</span>  int main(int argc, char *argv[])
+ <span style="color:#ff0;font-weight:bold">2</span>  {
+!3      unsigned int i = 0;
+ <span style="color:#ff0;font-weight:bold">4</span>      <span style="color:#fff;font-weight:bold">return</span> 0;
+ <span style="color:#ff0;font-weight:bold">5</span>  }
+~
+~
+─── Stack ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[0] from 0x00000000004004f8 in main+11 at example_1.c:3
+─── Threads ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1] id <span style="color:#ff0;font-weight:bold">781</span> name example_1 from 0x00000000004004f8 in main+11 at example_1.c:3
+─── Variables ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+arg argc = 1, argv = 0x7ffe4bd325c8: <span style="color:#ff0;font-weight:bold">47</span> <span style="color:#0ff;font-weight:bold">&#39;/&#39;</span>
+loc i = <span style="color:#ff0;font-weight:bold">0</span>
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+&gt;&gt;&gt; 
+</code></pre></div><p>Run next instruction, type <strong>&ldquo;next&rdquo;</strong> and execute:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># Go to next line</span>
+&gt;&gt;&gt; next
+</code></pre></div><p>Jump to assigned line in source code, type <strong>&ldquo;jump #line&rdquo;</strong> and execute:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># Jump to line 1:</span>
+&gt;&gt;&gt; jump <span style="color:#ff0;font-weight:bold">1</span>
+</code></pre></div><p>After all line executed, you will see information like following ones:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">─── Variables ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+arg main = 0x4004ed &lt;main&gt;: {int (int, char **, char **)} 0x4004ed &lt;main&gt;, argc = 1, argv = 0x7ffe4bd325c8: 47 &#39;/&#39;, init = &lt;optimized out&gt;, fini = &lt;optimized out&gt;, rtld_fini = &lt;optimized out&gt;, stack_end = 0x7ffe4bd325b8
+loc result = 0, unwind_buf = {cancel_jmp_buf = {[0] = {jmp_buf = {[0] = 0, [1] = 7105966841129512735, [2] = 4195328, [3] = 140730…, not_first_call = &lt;optimized out&gt;
+─
+</code></pre></div><p>Give any key, it will show information that the process is done:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">─── Output/messages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[Inferior <span style="color:#ff0;font-weight:bold">1</span> (process 794) exited normally]
+&gt;&gt;&gt; 
+The program is not being run.
+</code></pre></div><p>To exit <strong>GDB</strong>, type <strong>&ldquo;q&rdquo;</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt;&gt; q
+</code></pre></div>
       </div>
 
 

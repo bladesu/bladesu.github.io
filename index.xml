@@ -18,17 +18,8 @@
       
       <guid>https://bladesu.github.io/learning/debugger/gdb/_contents/</guid>
       <description>GDB: The GNU Project Debugger GDB is the debugger for C/C++ development. Here I put my notes about this wonderful tool.
-Installation Basic usage </description>
-    </item>
-    
-    <item>
-      <title>_Contents(Read Me)</title>
-      <link>https://bladesu.github.io/learning/debugger/gdb/contents/</link>
-      <pubDate>Thu, 12 Mar 2020 16:34:43 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/learning/debugger/gdb/contents/</guid>
-      <description>GDB: The GNU Project Debugger GDB is the debugger for C/C++ development. Here I put my notes about this wonderful tool.
-Installation Basic usage </description>
+Installation Show how to install GDB and related tools.
+Basic usage Basic usage knowlege for GDB.</description>
     </item>
     
     <item>
@@ -37,7 +28,9 @@ Installation Basic usage </description>
       <pubDate>Thu, 12 Mar 2020 16:30:55 +0800</pubDate>
       
       <guid>https://bladesu.github.io/learning/debugger/gdb/basic_usage/</guid>
-      <description></description>
+      <description>First: Add debug option when compiling.  GDB needs the debugging information provided by compiler. The debugger option should be on when generating object file for code line number or others.
+For C language compiled by GCC: In general, use -g option, according to GCC documentation:
+ -g Produce debugging information in the operating system&amp;rsquo;s native format (stabs, COFF, XCOFF, or DWARF 2). GDB can work with this debugging information.</description>
     </item>
     
     <item>
