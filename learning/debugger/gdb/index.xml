@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gdb on Blade Su The Coder</title>
+    <title>Gdb for C/C&#43;&#43; on Blade Su The Coder</title>
     <link>https://bladesu.github.io/learning/debugger/gdb/</link>
-    <description>Recent content in Gdb on Blade Su The Coder</description>
+    <description>Recent content in Gdb for C/C&#43;&#43; on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 12 Mar 2020 15:15:01 +0800</lastBuildDate>
@@ -12,13 +12,32 @@
     
     
     <item>
-      <title>Contents</title>
+      <title>_Contents(Read Me)</title>
+      <link>https://bladesu.github.io/learning/debugger/gdb/_contents/</link>
+      <pubDate>Thu, 12 Mar 2020 16:34:43 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/debugger/gdb/_contents/</guid>
+      <description>GDB: The GNU Project Debugger GDB is the debugger for C/C++ development. Here I put my notes about this wonderful tool.
+Installation Basic usage </description>
+    </item>
+    
+    <item>
+      <title>_Contents(Read Me)</title>
       <link>https://bladesu.github.io/learning/debugger/gdb/contents/</link>
-      <pubDate>Thu, 12 Mar 2020 15:36:43 +0800</pubDate>
+      <pubDate>Thu, 12 Mar 2020 16:34:43 +0800</pubDate>
       
       <guid>https://bladesu.github.io/learning/debugger/gdb/contents/</guid>
       <description>GDB: The GNU Project Debugger GDB is the debugger for C/C++ development. Here I put my notes about this wonderful tool.
-installation </description>
+Installation Basic usage </description>
+    </item>
+    
+    <item>
+      <title>Basic_usage</title>
+      <link>https://bladesu.github.io/learning/debugger/gdb/basic_usage/</link>
+      <pubDate>Thu, 12 Mar 2020 16:30:55 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/debugger/gdb/basic_usage/</guid>
+      <description></description>
     </item>
     
     <item>
