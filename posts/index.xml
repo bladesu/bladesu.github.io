@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Mar 2020 22:19:33 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 16:38:31 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A bug in docker desktop 2.2.0 for Mac OS</title>
+      <link>https://bladesu.github.io/posts/2020/03/16/docker_desktop_bug/</link>
+      <pubDate>Mon, 16 Mar 2020 16:38:31 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/posts/2020/03/16/docker_desktop_bug/</guid>
+      <description>For Mac OS user, it should be a easy choice that applying Docker Desktop for docker environment setup. However I got a bug with container starting up for port binding, port 111 was in used status by Desktop I thought. It is a bug for Docker Desk 2.2.0. Some user in the community had found it, I think it should be solved in the following version.
+https://github.com/docker/compose/issues/7188?fbclid=IwAR0YVaB6Werd_eRETqF0QYu0M9aMoDayILrAuKhP5l3ulGJoVpCSGzQFRG8</description>
+    </item>
     
     <item>
       <title>Start editing learning note for GNU make.</title>
