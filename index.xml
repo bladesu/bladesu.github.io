@@ -6,10 +6,40 @@
     <description>Recent content on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Mar 2020 16:38:31 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2020 21:02:23 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction with docker buildx for multiple CPU architecture development.</title>
+      <link>https://bladesu.github.io/posts/2020/03/18/first_glance2docker_buildx/</link>
+      <pubDate>Wed, 18 Mar 2020 21:02:23 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/posts/2020/03/18/first_glance2docker_buildx/</guid>
+      <description>A new update here: learning/devops/cross_compilation/dockerized/0000_first_try.md
+Here I introduce the new docker desktop feature which integrated with qemu and docker buildx command. Now we can build applications in docker images executed with different CPU architectures and run them above operation system with docker environment installed.</description>
+    </item>
+    
+    <item>
+      <title>&lt;____________ Contents (Read Me) ____________&gt;</title>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</link>
+      <pubDate>Wed, 18 Mar 2020 19:33:17 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</guid>
+      <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  </description>
+    </item>
+    
+    <item>
+      <title>First try to development with ARM docker container[Experimental Feature]</title>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/</link>
+      <pubDate>Wed, 18 Mar 2020 11:44:16 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/</guid>
+      <description>Build once, run everywhere. Like Java language. Here comes a convenient way to write and deploy application with multiple CPU archtecture articultures attributed by integrated dockerized environments: Docker Desktop(after v2.1.0)
+Prepare Docker environment: The environment in this demo I prepared:
+ host os: macOS High Sierra 10.13.6 docker environment: integrated in docker desktop v2.1.0.5 (you can check stable release here:link)  Here we need to use docker buildx command, which is provided by docker desktop after v2.</description>
+    </item>
     
     <item>
       <title>A bug in docker desktop 2.2.0 for Mac OS</title>
@@ -22,7 +52,7 @@ https://github.com/docker/compose/issues/7188?fbclid=IwAR0YVaB6Werd_eRETqF0QYu0M
     </item>
     
     <item>
-      <title>_Contents(Read Me)</title>
+      <title>&lt;____________ Contents (Read Me) ____________&gt;</title>
       <link>https://bladesu.github.io/learning/debugger/gdb/_contents/</link>
       <pubDate>Thu, 12 Mar 2020 16:34:43 +0800</pubDate>
       
@@ -55,7 +85,7 @@ sudo apt-get install gdb GDB dashborad(Recommended) A good UI written using Pyth
     </item>
     
     <item>
-      <title>_Contents(Read Me)</title>
+      <title>&lt;____________ Contents (Read Me) ____________&gt;</title>
       <link>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/_contents/</link>
       <pubDate>Fri, 06 Mar 2020 23:33:27 +0800</pubDate>
       

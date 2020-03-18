@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dockerized environments on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/</link>
+    <description>Recent content in Dockerized environments on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Mar 2020 11:41:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/learning/devops/cross_compilation/dockerized/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>&lt;____________ Contents (Read Me) ____________&gt;</title>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</link>
+      <pubDate>Wed, 18 Mar 2020 19:33:17 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</guid>
+      <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  </description>
+    </item>
+    
+    <item>
+      <title>First try to development with ARM docker container[Experimental Feature]</title>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/</link>
+      <pubDate>Wed, 18 Mar 2020 11:44:16 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/</guid>
+      <description>Build once, run everywhere. Like Java language. Here comes a convenient way to write and deploy application with multiple CPU archtecture articultures attributed by integrated dockerized environments: Docker Desktop(after v2.1.0)
+Prepare Docker environment: The environment in this demo I prepared:
+ host os: macOS High Sierra 10.13.6 docker environment: integrated in docker desktop v2.1.0.5 (you can check stable release here:link)  Here we need to use docker buildx command, which is provided by docker desktop after v2.</description>
+    </item>
+    
+  </channel>
+</rss>

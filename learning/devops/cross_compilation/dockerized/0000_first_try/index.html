@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Blade Su">
+    <meta name="description" content="Reading, learning, and self-Satisfaction">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="First try to development with ARM docker container[Experimental Feature]"/>
+<meta name="twitter:description" content="Build once, run everywhere. Like Java language. Here comes a convenient way to write and deploy application with multiple CPU archtecture articultures attributed by integrated dockerized environments: Docker Desktop(after v2.1.0)
+Prepare Docker environment: The environment in this demo I prepared:
+ host os: macOS High Sierra 10.13.6 docker environment: integrated in docker desktop v2.1.0.5 (you can check stable release here:link)  Here we need to use docker buildx command, which is provided by docker desktop after v2."/>
+
+    <meta property="og:title" content="First try to development with ARM docker container[Experimental Feature]" />
+<meta property="og:description" content="Build once, run everywhere. Like Java language. Here comes a convenient way to write and deploy application with multiple CPU archtecture articultures attributed by integrated dockerized environments: Docker Desktop(after v2.1.0)
+Prepare Docker environment: The environment in this demo I prepared:
+ host os: macOS High Sierra 10.13.6 docker environment: integrated in docker desktop v2.1.0.5 (you can check stable release here:link)  Here we need to use docker buildx command, which is provided by docker desktop after v2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/" />
+<meta property="article:published_time" content="2020-03-18T11:44:16+08:00" />
+<meta property="article:modified_time" content="2020-03-18T11:44:16+08:00" />
+
+
+    
+      <base href="https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/">
+    
+    <title>
+  First try to development with ARM docker container[Experimental Feature] · Blade Su The Coder
+</title>
+
+    
+      <link rel="canonical" href="https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0000_first_try/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://bladesu.github.io/css/coder.min.ab11da33926aff1bbed738198c81361e84bf702098a3e97ed5b24126bde6c9ba.css" integrity="sha256-qxHaM5Jq/xu&#43;1zgZjIE2HoS/cCCYo&#43;l&#43;1bJBJr3mybo=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://bladesu.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.64.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://bladesu.github.io/">
+      Blade Su The Coder
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/learning/">Learning</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">First try to development with ARM docker container[Experimental Feature]</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-18T11:44:16&#43;08:00'>
+                March 18, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://bladesu.github.io/tags/arm/">arm</a>
+      <span class="separator">•</span>
+    <a href="https://bladesu.github.io/tags/docker/">docker</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="build-once-run-everywhere">Build once, run everywhere.</h1>
+<p>Like Java language. Here comes a convenient way to write and deploy application with multiple CPU archtecture articultures attributed by integrated dockerized environments: <strong>Docker Desktop</strong>(after v2.1.0)</p>
+<h1 id="prepare-docker-environment">Prepare Docker environment:</h1>
+<p>The environment in this demo I prepared:</p>
+<ul>
+<li>host os: macOS High Sierra 10.13.6</li>
+<li>docker environment: integrated in docker desktop v2.1.0.5 (you can check stable release here:<a href="https://docs.docker.com/docker-for-mac/release-notes/">link</a>)</li>
+</ul>
+<p>Here we need to use <strong>docker buildx</strong> command, which is provided by <strong>docker desktop</strong> after v2.1.0. Currently <strong>buildx</strong> is still an experimental feature. So you have to open it. In <strong>docker desktop</strong>, it provides GUI operation to change the daemon configuration, just enable the experimental features:
+<img src="https://bladesu.github.io/learning/devops/cross_compilation/dockerized/docker-desktop-enable-experimental-features.png" alt="Example"></p>
+<h1 id="operations">Operations</h1>
+<p>You can check this github repo for following scripts: <a href="https://github.com/bladesu/demo_build_docker_images_multi_platform.git">https://github.com/bladesu/demo_build_docker_images_multi_platform.git</a></p>
+<p>Here a easiest Dockfile written for this demonstration.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#fff;font-weight:bold">FROM</span><span style="color:#0ff;font-weight:bold"> alpine:3.9</span><span style="color:#f00">
+</span></code></pre></div><ul>
+<li>Create docker builder and use it.</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker buildx create --name test_builder
+docker buildx use test_builder
+</code></pre></div><ul>
+<li>Build images for <strong>arm64</strong> architecture.</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker buildx build --platform linux/amd64 -t alpine-amd64 --load .
+</code></pre></div><ul>
+<li>Run the built one, the corresponded qemu simulator will be selectd to run it.</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run alpine-arm64 uname -a
+</code></pre></div><ul>
+<li>The <strong>uname -a</strong> command in the container finally shows that:</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Linux 7029d307147e 4.9.184-linuxkit #1 SMP Tue Jul 2 22:58:16 UTC 2019 aarch64 Linux
+</code></pre></div><p>Here we can see the process is running above <strong>aarch64</strong> architecture.</p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://community.arm.com/developer/tools-software/tools/b/tools-software-ides-blog/posts/getting-started-with-docker-on-arm">Getting started with Docker on ARM (from community.arm.com)</a></li>
+<li><a href="https://docs.docker.com/buildx/working-with-buildx/">Docker desktop product manuals: Docker Buildx</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-bladesu-github-io-tech-blog-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>See the trend, stay calm.</p>
+    
+    
+      
+        © 2020
+      
+       Blade Su 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>
