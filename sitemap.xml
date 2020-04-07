@@ -3,18 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/_contents/</loc>
-    <lastmod>2020-03-23T23:10:24+08:00</lastmod>
+    <loc>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</loc>
+    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/</loc>
-    <lastmod>2020-03-23T23:10:24+08:00</lastmod>
+    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/tags/c_language/</loc>
-    <lastmod>2020-03-23T23:09:24+08:00</lastmod>
+    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/posts/</loc>
+    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/</loc>
+    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/_contents/</loc>
+    <lastmod>2020-03-23T23:10:24+08:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +39,6 @@
   
   <url>
     <loc>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/</loc>
-    <lastmod>2020-03-23T23:09:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/tags/</loc>
     <lastmod>2020-03-23T23:09:24+08:00</lastmod>
   </url>
   
@@ -49,11 +59,6 @@
   
   <url>
     <loc>https://bladesu.github.io/posts/2020/03/18/first_glance2docker_buildx/</loc>
-    <lastmod>2020-03-18T21:02:23+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/posts/</loc>
     <lastmod>2020-03-18T21:02:23+08:00</lastmod>
   </url>
   
