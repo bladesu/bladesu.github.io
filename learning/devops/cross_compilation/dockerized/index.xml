@@ -13,10 +13,10 @@
     
     <item>
       <title>Contents(Read Me First)</title>
-      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</link>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</link>
       <pubDate>Wed, 18 Mar 2020 19:33:17 +0800</pubDate>
       
-      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</guid>
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</guid>
       <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  </description>
     </item>
     

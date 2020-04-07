@@ -23,10 +23,10 @@ I introduce about the some knowledge in C language for string processing here. D
     
     <item>
       <title>Contents(Read Me First)</title>
-      <link>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/_contents/</link>
+      <link>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/contents/</link>
       <pubDate>Mon, 23 Mar 2020 23:10:24 +0800</pubDate>
       
-      <guid>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/_contents/</guid>
+      <guid>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/contents/</guid>
       <description></description>
     </item>
     
@@ -51,10 +51,10 @@ Here I introduce the new docker desktop feature which integrated with qemu and d
     
     <item>
       <title>Contents(Read Me First)</title>
-      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</link>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</link>
       <pubDate>Wed, 18 Mar 2020 19:33:17 +0800</pubDate>
       
-      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/_contents/</guid>
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</guid>
       <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  </description>
     </item>
     
@@ -81,10 +81,10 @@ Prepare Docker environment: The environment in this demo I prepared:
     
     <item>
       <title>Contents(Read Me First)</title>
-      <link>https://bladesu.github.io/learning/debugger/gdb/_contents/</link>
+      <link>https://bladesu.github.io/learning/debugger/gdb/contents/</link>
       <pubDate>Thu, 12 Mar 2020 16:34:43 +0800</pubDate>
       
-      <guid>https://bladesu.github.io/learning/debugger/gdb/_contents/</guid>
+      <guid>https://bladesu.github.io/learning/debugger/gdb/contents/</guid>
       <description>GDB: The GNU Project Debugger GDB is the debugger for C/C++ development. Here I put my notes about this wonderful tool.
 Installation Show how to install GDB and related tools.
 Basic usage Basic usage knowlege for GDB.</description>
@@ -114,10 +114,10 @@ sudo apt-get install gdb GDB dashborad(Recommended) A good UI written using Pyth
     
     <item>
       <title>Contents(Read Me First)</title>
-      <link>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/_contents/</link>
+      <link>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/contents/</link>
       <pubDate>Fri, 06 Mar 2020 23:33:27 +0800</pubDate>
       
-      <guid>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/_contents/</guid>
+      <guid>https://bladesu.github.io/learning/building_tool/gnu_make/unusual_syntax/contents/</guid>
       <description>Here I will continously update some contents about sytanx in GNU make which is uncommon I think or ones is not eaily understood by intuition. If you have interesting about that, you will gain big benefit from reading the document(https://www.gnu.org/software/make/manual/make.html).
 Automatic Variables The Automatic variables feature of GUN make allow you have variable whose value computed afresh for each rule that is executed in the runtime.
 $@ and $&amp;lt; pair  Static Pattern Rules Cited from documentation(4.</description>
