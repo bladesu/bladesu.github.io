@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Blade Su">
+    <meta name="description" content="Reading, learning, and self-Satisfaction">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Pointer expression for data with char and string literal in C language."/>
+<meta name="twitter:description" content="Introduction There is no real primitive &ldquo;string&rdquo; object in C language. From a perspective of data processing, a string is a contiguous sequence of characters ended with &#39;\0&rsquo; or so-called NUL terminator. The serious properties about string had beed defined in C standard. For example, session 7.1 in C99 standard, it would be really gainful to read C standard carefully. Here I introduce some perperties we needed to know for writing C code."/>
+
+    <meta property="og:title" content="Pointer expression for data with char and string literal in C language." />
+<meta property="og:description" content="Introduction There is no real primitive &ldquo;string&rdquo; object in C language. From a perspective of data processing, a string is a contiguous sequence of characters ended with &#39;\0&rsquo; or so-called NUL terminator. The serious properties about string had beed defined in C standard. For example, session 7.1 in C99 standard, it would be really gainful to read C standard carefully. Here I introduce some perperties we needed to know for writing C code." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/" />
+<meta property="article:published_time" content="2020-03-23T23:09:24+08:00" />
+<meta property="article:modified_time" content="2020-03-23T23:09:24+08:00" />
+
+
+    
+      <base href="https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/">
+    
+    <title>
+  Pointer expression for data with char and string literal in C language. · Blade Su The Coder
+</title>
+
+    
+      <link rel="canonical" href="https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://bladesu.github.io/css/coder.min.ab11da33926aff1bbed738198c81361e84bf702098a3e97ed5b24126bde6c9ba.css" integrity="sha256-qxHaM5Jq/xu&#43;1zgZjIE2HoS/cCCYo&#43;l&#43;1bJBJr3mybo=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://bladesu.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.64.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://bladesu.github.io/">
+      Blade Su The Coder
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/learning/">Learning</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Pointer expression for data with char and string literal in C language.</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-23T23:09:24&#43;08:00'>
+                March 23, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              10-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://bladesu.github.io/tags/c_language/">c_language</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="introduction">Introduction</h3>
+<p>There is no real primitive <strong>&ldquo;string&rdquo;</strong> object in <strong>C language</strong>. From a perspective of data processing, a <strong>string</strong> is a contiguous sequence of characters ended with <strong>'\0&rsquo;</strong> or so-called <strong>NUL terminator</strong>. The serious properties about <strong>string</strong> had beed defined in <strong>C standard</strong>. For example, session <strong>7.1</strong> in <strong>C99</strong> standard, it would be really gainful to read <strong>C standard</strong> carefully. Here I introduce some perperties we needed to know for writing <strong>C code</strong>. First, two objects could be used when processing <strong>string</strong>, (1) <strong>char array</strong> and (2) <strong>char *</strong>(pointer to char). Here I will dig out more details in following part. All code demonstrated here can be read in following git repository: <a href="https://github.com/bladesu/c_practices/blob/master/src/basic/string_practice.c">https://github.com/bladesu/c_practices/blob/master/src/basic/string_practice.c</a></p>
+<h3 id="something-should-be-known-about-__char-array__-and-__pointer-to-char__">Something should be known about <strong>char array</strong> and <strong>pointer to char</strong>.</h3>
+<ul>
+<li>
+<h4 id="understand-char-array">Understand char array:</h4>
+<p>In <strong>C language</strong>, declaration to a <strong>char array</strong> must have an immediate initialization of <strong>fixed size</strong> memory. Here we talk about some properties in following sections.</p>
+<ul>
+<li>
+<h4 id="value-of-a-char-array-object-is-just-its-address">Value of a char array object is just its address.</h4>
+<p><strong>c_code1</strong>: show address with operator act upon char array.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> c_arr[] = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">(value vs address) = (%p vs %p)</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, c_arr, &amp;c_arr);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Is they identical?:%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, (<span style="color:#fff;font-weight:bold">void</span> *)c_arr == (<span style="color:#fff;font-weight:bold">void</span> *)&amp;c_arr? <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Yes</span><span style="color:#0ff;font-weight:bold">&#34;</span>:<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">No</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">(value vs address) = (0x7ffcc4ce8f90 vs 0x7ffcc4ce8f90)
+Is they identical?:Yes
+</code></pre></div><p>In this case, we know there is no other <strong>pointer</strong>, which has independent address, to store address of the char array. The value of the <strong>char array</strong> object is just the same as its address. There is other special properties that <strong>sizeof</strong> operator can get the size of contained data in bytes. But this property is not for function argument, we will talk it later.</p>
+</li>
+<li>
+<h4 id="char-array-initialized-with-a-stirng-literal">Char array initialized with a stirng literal.</h4>
+<p>A common way to assign the inital char values is use {} pair to contain the char values. Here a <strong>NUL</strong> end is declared as <strong>'\0&rsquo;</strong> to act like a common string we use.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> foo[] = {<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">a</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">b</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">c</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">&#39;</span>};
+</code></pre></div><p>Other similar way to assign the inital char values to a char array is giving it a <strong>string literal</strong> (embraced by dobule quotes)to copy values just like assigning value when it is declared (see following code block). However these two approaches are different in many perspective, we will talk about latter.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> foo[] = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+</code></pre></div><p>Some thing should be noted that it is actually no need to assign inital values for each elements in initialization of char array, <strong>only</strong> size of the array must exist in declaration. In above case, no size was declared becase of a <strong>syntatic sugar</strong>. The size is just the same of the assigned <strong>string literal</strong>.</p>
+</li>
+<li>
+<h4 id="more-properties-about-initialization-of-a-char-array">More properties about initialization of a char array.</h4>
+<p>Next, in following demo code, a char array named <strong>no_init</strong> with length with two characters long whose value is not pre-assigned, you can see NUL terminator <strong>'\0&rsquo;</strong> as default value to such a char array.</p>
+<p><strong>c_code2</strong>: show size and contents in declared char array without assigning values.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> no_init[<span style="color:#ff0;font-weight:bold">2</span>];
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof(</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">)=%lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">no_init</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(no_init));
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">First char in </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">:&#39;%c&#39;</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">no_init</span><span style="color:#0ff;font-weight:bold">&#34;</span>, *no_init);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Is first char equal to NUL terminator(</span><span style="color:#0ff;font-weight:bold">\&#39;</span><span style="color:#0ff;font-weight:bold">\\</span><span style="color:#0ff;font-weight:bold">0</span><span style="color:#0ff;font-weight:bold">\&#39;</span><span style="color:#0ff;font-weight:bold">)?:%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, *no_init == <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">&#39;</span>? <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Yes</span><span style="color:#0ff;font-weight:bold">&#34;</span>: <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">No</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Is second char equal to NUL terminator(</span><span style="color:#0ff;font-weight:bold">\&#39;</span><span style="color:#0ff;font-weight:bold">\\</span><span style="color:#0ff;font-weight:bold">0</span><span style="color:#0ff;font-weight:bold">\&#39;</span><span style="color:#0ff;font-weight:bold">)?:%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, *(no_init+<span style="color:#ff0;font-weight:bold">1</span>) == <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">&#39;</span>? <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Yes</span><span style="color:#0ff;font-weight:bold">&#34;</span>: <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">No</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sizeof(&#34;no_init&#34;)=2
+First char in &#34;no_init&#34;:&#39;&#39;
+Is first char equal to NUL terminator(&#39;\0&#39;)?:Yes
+Is second char equal to NUL terminator(&#39;\0&#39;)?:Yes
+</code></pre></div><p>Let&rsquo;s go back to <strong>string literal</strong>, such object has memory address which is not located at <strong>stack</strong> region. It could be in <strong>code segment</strong> or somewhere else, it is actually implementation-specific stuff. And this kind of object is reuseful in the runtime, and in most time you can treat it as a char array object in the scenario including <strong>retrival of memory address</strong>(with <strong>&amp;</strong>), <strong>ocuppied memory size</strong>(with <strong>sizeof</strong>), or an argument to function(however char array as argument is usually not a good design of a function).</p>
+<p><strong>c_code3</strong>: Retrive memory address to the objects point to reusable <strong>string literal</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> c_arr_op[] = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Address Representation1: with address operator</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">    Address of string literal </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">:%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, &amp;<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">    Address of c_arr_op:%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, &amp;c_arr_op);
+
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Address Representation2: without address operator</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">    Address of string literal </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">:%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">    Address of c_arr_op:%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, c_arr_op);
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Address Representation1: with address operator
+Address of string literal &#34;abc&#34;:0x400f57
+Address of c_arr1:0x7ffec7232ed0
+Address Representation2: without address operator
+Address of string literal &#34;abc&#34;:0x400f57
+Address of c_arr1:0x7ffec7232ed0
+</code></pre></div><p><strong>c_code4</strong>: show the reusable properties of <strong>string literal</strong> by assigning same <strong>string literal</strong> to different char pointer.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> * c_arr_op1 = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+<span style="color:#fff;font-weight:bold">char</span> * c_arr_op2 = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s points to address=%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">c_arr_op1</span><span style="color:#0ff;font-weight:bold">&#34;</span>, c_arr_op1 );
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s points to address=%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">c_arr_op2</span><span style="color:#0ff;font-weight:bold">&#34;</span>, c_arr_op2 );
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">String literal </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold"> has address=%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>, &amp;<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">c_arr_op1 points to address=0x400fca
+c_arr_op2 points to address=0x400fca
+String literal &#34;abc&#34; has address=0x400fca
+</code></pre></div><p><strong>c_code5</strong>: show address and values of each elements in a char array initialized with <strong>string literal</strong>. Watch carefully please, they are not located at same memory address.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> c_arr1[] = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Find value and memory address in char array and string literal as target to copied.</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+<span style="color:#fff;font-weight:bold">for</span> (<span style="color:#fff;font-weight:bold">int</span> i = <span style="color:#ff0;font-weight:bold">0</span>; i &lt; <span style="color:#fff;font-weight:bold">sizeof</span>(c_arr1); i++)
+{
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Serial order:%d</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, i);
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">    In </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">: value=%c, address=%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>, (<span style="color:#fff;font-weight:bold">char</span>) *( (<span style="color:#fff;font-weight:bold">char</span>*)&amp;<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span> + i), &amp;<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span> + i);
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">    In </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">: value=%c, address=%p</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">c_arr1</span><span style="color:#0ff;font-weight:bold">&#34;</span>, (<span style="color:#fff;font-weight:bold">char</span>) *((<span style="color:#fff;font-weight:bold">char</span>*)c_arr1 + i), c_arr1 + i);
+}
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
+Find value and memory address in this two objects:
+Serial order:0
+    In &#34;abc&#34;: value=a, address=0x400f57
+    In &#34;c_arr1&#34;: value=a, address=0x7ffec7232ed0
+Serial order:1
+    In &#34;abc&#34;: value=b, address=0x400f5b
+    In &#34;c_arr1&#34;: value=b, address=0x7ffec7232ed1
+Serial order:2
+    In &#34;abc&#34;: value=c, address=0x400f5f
+    In &#34;c_arr1&#34;: value=c, address=0x7ffec7232ed2
+Serial order:3
+    In &#34;abc&#34;: value=, address=0x400f63
+    In &#34;c_arr1&#34;: value=, address=0x7ffec7232ed3
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<h3 id="understand-pointer-to-char">Understand pointer to char:</h3>
+<p>To declare a <strong>pointer to char</strong> object, we can apply <strong>char *</strong> type and assign value of the head of contigous memory to this point object (usually <strong>pointer to char</strong> for processing <strong>string</strong>). Compare to <strong>char array</strong>, there is no declaration of actual memory size which will attached to this pointer.</p>
+<ul>
+<li>
+<h4 id="declarations-and-initialization">Declarations and initialization:</h4>
+<ul>
+<li>Declarations of a pointer to char without assigning value.
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> * c_ptr;
+</code></pre></div></li>
+<li>Declarations of a pointer to char with assigning memory address allocated by malloc.
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> * c_ptr = malloc(<span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#fff;font-weight:bold">char</span>) * <span style="color:#ff0;font-weight:bold">10</span>);
+</code></pre></div></li>
+<li>Declarations of a pointer to char with address of a <strong>string literal</strong> we just talked about.
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> * c_ptr = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+</code></pre></div></li>
+<li>Declarations of a <strong>pointer to char</strong> with address of char array we just talking about in above section. Two assignment way is available we had talked in above section.
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> c_arr = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+<span style="color:#fff;font-weight:bold">char</span> * c_ptr1 = c_arr;
+<span style="color:#007f7f">// or
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">char</span> * c_ptr2 = &amp;c_arr;
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<h4 id="pointer-and-address">Pointer and address:</h4>
+<ul>
+<li>
+<p>Address of pointer object and the address it assigned to.</p>
+<p>A pointer in <strong>c language</strong> has its own memeory address which is allocated to save its value, but this value is a memory address which another data located at. Here we are talking about <strong>pointer to char</strong>, that is, a pointer which is assigned to a address containing data with <strong>char type</strong>.</p>
+<p><strong>c_code6</strong>: show address of a <strong>pointer to char</strong> and its value:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007f7f">// define two object:
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">char</span> foo = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">a</span><span style="color:#0ff;font-weight:bold">&#39;</span>;
+<span style="color:#fff;font-weight:bold">char</span> *char_ptr;
+<span style="color:#007f7f">// assign address of foo to char_ptr
+</span><span style="color:#007f7f"></span>char_ptr = &amp;foo;
+<span style="color:#007f7f">// display current data details
+</span><span style="color:#007f7f"></span>printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">|%10s|%18s|%15s|</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">object</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">address</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">value(hex|char)</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">|%10s|%18p|%15c|</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">foo</span><span style="color:#0ff;font-weight:bold">&#34;</span>,&amp;foo, foo);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">|%10s|%18p|%15p|</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">char_ptr</span><span style="color:#0ff;font-weight:bold">&#34;</span>,&amp;char_ptr, char_ptr);
+</code></pre></div><p>The complied program shows:</p>
+<table>
+<thead>
+<tr>
+<th>object</th>
+<th>address</th>
+<th>value(hex or char)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foo</td>
+<td><strong>0x7ffc70ae0977</strong></td>
+<td>a</td>
+</tr>
+<tr>
+<td>char_ptr</td>
+<td>0x7ffc70ae0978</td>
+<td><strong>0x7ffc70ae0977</strong></td>
+</tr>
+</tbody>
+</table>
+<p>It indicated that an object named as <strong>char_ptr</strong> with a type of <strong>pointer to char</strong>, which is assigned to store the address of <strong>foo</strong>. __It should be noted that <strong>char_ptr</strong> own its address which is different from <strong>foo</strong>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="more-detail-about--__char-array__-and-__pointer-to-char__">More detail about  <strong>char array</strong> and <strong>pointer to char</strong></h3>
+<ul>
+<li>
+<h4 id="understand-what-is-initailized">Understand what is initailized:</h4>
+<ul>
+<li>
+<p>What do you think the size of following <strong>object</strong>.</p>
+<p><strong>c_code7</strong>: show sizes of <strong>string literal</strong> and <strong>pointer to char</strong>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> foo1[] = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+<span style="color:#fff;font-weight:bold">char</span> foo2[] = {<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">a</span><span style="color:#0ff;font-weight:bold">&#39;</span>,<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">b</span><span style="color:#0ff;font-weight:bold">&#39;</span>,<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">c</span><span style="color:#0ff;font-weight:bold">&#39;</span>};
+<span style="color:#fff;font-weight:bold">char</span> *foo3 = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof </span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\&#34;</span><span style="color:#0ff;font-weight:bold"> = %lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>));
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof %s = %lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">foo1</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(foo1));
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof %s = %lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">foo2</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(foo2));
+
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof %s = %lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">（void*)</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#fff;font-weight:bold">void</span> *));
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof %s = %lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">foo3</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(foo3));
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sizeof &#34;abc&#34; = 4
+sizeof foo1 = 4
+sizeof foo2 = 3
+
+sizeof（void*) = 8
+sizeof foo3 = 8
+</code></pre></div><p>Here I apply a <strong>sizeof</strong> operator, it will give the size it opreands during compiling time. However it works in different way according to <strong>operand type</strong>.</p>
+<ul>
+<li>
+<p>Array object.</p>
+<p>Apply <strong>sizeof</strong> operator to array object, it will show the size of the array. I had metioned that the size of a array must be defined in declaration in above section. Therefore it is reasonable that the <strong>sizeof</strong> operator could give the array size in compile time. In this case, <strong>foo1</strong> is given a <strong>string literal</strong> to copied and <strong>foo2</strong> is given a &ldquo;{}&rdquo; enclosed data with char type. The foo has one more hiden data with one byte length. That is a <strong>NUL terminator</strong>('\0&rsquo;) in the end of sequence. Ihis character is usually a normal string ended with</p>
+</li>
+<li>
+<p>Primitive data type and pointer type
+When <strong>sizeof</strong> is applied to primitive data type(<strong>int</strong>, <strong>double</strong>,&hellip;) or pointer type(<strong>char *</strong>, <strong>void *</strong>, self-defined-struct *), it give the amount of memeory is allocated to that type. In above case, sizeof(<strong>void *</strong>) and sizeof(<strong>foo3</strong>) which is a <strong>pointer to char</strong> have the same memory size &ldquo;8&rdquo; in my compiling machine, and the <strong>result</strong> is not related to the size of the assigned value of these object</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h5 id="some-mistakes-probably-we-make">Some mistakes probably we make.</h5>
+<ul>
+<li>
+<h5 id="some-case-with-application-of-standard-library">Some case with application of standard library.</h5>
+<ul>
+<li>
+<h6 id="for-function-in-__c-language__-__string-literal__-__char-array__-are-regarded-as-the-argument-equaled-to-__poiter-to-char__">For function in <strong>C language</strong>, <strong>string literal</strong>, <strong>char array</strong> are regarded as the argument equaled to <strong>poiter to char</strong>.</h6>
+<p>In <strong>string</strong> processing, there is a fact that function in <strong>C languag</strong> have only single arguement type <strong>pointer to char</strong> as argument rather than <strong>string literal</strong> and <strong>char array</strong>. Here I put a little demo that a function implemented with a <strong>char array</strong> arguemnt. In the end you will see the argument in the function still a <strong>pointer to char</strong>. There is no real <strong>char array</strong> argument but a  <strong>syntactic sugar</strong> in <strong>C language</strong>. Functions to handle <strong>string</strong> need to apply the feature of <strong>NUL</strong> end.</p>
+<p><strong>c_code8</strong>: try char array as argument to a function.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#0f0;font-weight:bold">#</span><span style="color:#0f0;font-weight:bold">include</span> <span style="color:#0f0;font-weight:bold">&lt;stdio.h&gt;</span><span style="color:#0f0;font-weight:bold">
+</span><span style="color:#0f0;font-weight:bold"></span><span style="color:#fff;font-weight:bold">void</span> show_size(<span style="color:#fff;font-weight:bold">char</span> test[])
+{
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(test));
+}
+<span style="color:#fff;font-weight:bold">void</span> main(<span style="color:#fff;font-weight:bold">void</span>)
+{
+    <span style="color:#fff;font-weight:bold">char</span> test[] = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">123</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof a string literal:%lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">123</span><span style="color:#0ff;font-weight:bold">&#34;</span>));
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof a char array:%lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(test));
+    printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">sizeof a (char *):%lu</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#fff;font-weight:bold">char</span> *));
+    show_size(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">123</span><span style="color:#0ff;font-weight:bold">&#34;</span>); 
+    show_size(test);
+}
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sizeof a string literal:4
+sizeof a char array:4
+sizeof a (char *):8
+8
+8
+</code></pre></div><p>In above case, <strong>string literal</strong> &ldquo;abc&rdquo;, has four characters &lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &lsquo;\0&rsquo;. It counts 4 bytes in main code in the case of <strong>char array</strong> and <strong>string literal</strong>. When it comes to function arguments, all of the case have the same <strong>sizeof</strong> result as <strong>char to pointer</strong>. Here is 8 bytes.</p>
+</li>
+<li>
+<h6 id="printf-function-in-stdioh">printf function in stdio.h</h6>
+<p>A easy usage of <strong>printf</strong> function to print a <strong>string</strong> like following block:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+</code></pre></div><p>And you will see the printed character in console during runtime:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">abc
+</code></pre></div><p>We mention that a string is a contiguous sequence of characters terminated with <strong>NUL</strong>. If we apply some strange case like <strong>&ldquo;abc\0def&rdquo;</strong>. It will show only the characters before <strong>NUL</strong> because the library is implemented based on the standard.</p>
+<p><strong>c_code9</strong>: try printf in stdio.h</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> abc1[] = {<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">a</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">b</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">c</span><span style="color:#0ff;font-weight:bold">&#39;</span>,<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">&#39;</span>};
+<span style="color:#fff;font-weight:bold">char</span> abc2[] = {<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">a</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">b</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">c</span><span style="color:#0ff;font-weight:bold">&#39;</span>,<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">&#39;</span>,<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">d</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">e</span><span style="color:#0ff;font-weight:bold">&#39;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">f</span><span style="color:#0ff;font-weight:bold">&#39;</span>};
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, abc1);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, abc2);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">efg</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">abc
+abc
+abc
+</code></pre></div></li>
+<li>
+<h6 id="strcpy-function-in-stringh">strcpy function in string.h</h6>
+<p>Similarly, the strcpy function to copy string is based on the definition of <strong>string</strong>. It will copy the data from a <strong>char pointer</strong>.</p>
+<p><strong>c_code10</strong>: try strcpy in string.h</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> *char_p1;
+strcpy(char_p1, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">\0</span><span style="color:#0ff;font-weight:bold">def</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, char_p1);
+</code></pre></div><p><strong>result</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">abc
+</code></pre></div><p>In above function, I use a <strong>string literal</strong> as argument to <strong>strcpy</strong> function. It is available for <strong>string</strong> processing. However, <strong>string literal</strong> and <strong>char array</strong> in <strong>C language</strong> will finally be treated as <strong>pointer to char</strong> in compiling.</p>
+<p>Here is a wrong usage of <strong>strcpy</strong>, when you try to apply a <strong>strcpy</strong> to copy data from a address stored in a <strong>char **</strong> point to storage which located at address of <strong>string literal</strong>, in other word, a read-only region. It will cause a <strong>segmentation fault</strong> in the runtime.</p>
+<p><strong>c_code11</strong>: wrong use case in strcpy in string.h</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">char</span> * str_literal_1 = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">abc</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+<span style="color:#fff;font-weight:bold">char</span> * char_arr_test = <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">def</span><span style="color:#0ff;font-weight:bold">&#34;</span>;
+<span style="color:#007f7f">//Segmentation fault
+</span><span style="color:#007f7f"></span>strcpy(str_literal_1, char_arr_test);
+</code></pre></div><p><strong>result</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Segmentation fault
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-bladesu-github-io-tech-blog-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>See the trend, stay calm.</p>
+    
+    
+      
+        © 2020
+      
+       Blade Su 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>
