@@ -12,13 +12,13 @@
     
     
     <item>
-      <title></title>
+      <title>About string processing in C language.</title>
       <link>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</link>
       <pubDate>Tue, 07 Apr 2020 15:08:07 +0800</pubDate>
       
       <guid>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</guid>
       <description>A new post here: https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/
-I introduce abut the knowledge in C language for string processing here.</description>
+I introduce about the some knowledge in C language for string processing here. Do you have some confusing problem about string in C? char *, string literal, char array, which one should I use in some case? If you have same problem, please read this article.</description>
     </item>
     
     <item>
