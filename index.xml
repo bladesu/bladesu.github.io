@@ -18,7 +18,7 @@
       
       <guid>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</guid>
       <description>A new post here: https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/
-I introduce about the some knowledge in C language for string processing here. Do you have some confusing problem about string in C? char *, string literal, char array, which one should I use in some case? If you have same problem, please read this article.</description>
+I introduce the some knowledge in C language for string processing here. Do you confuse about string in C? char *, string literal, char array, which one should I use in some case? If you have same problem, please read this article.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ I introduce about the some knowledge in C language for string processing here. D
       <pubDate>Mon, 23 Mar 2020 23:09:24 +0800</pubDate>
       
       <guid>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/</guid>
-      <description>Introduction There is no real primitive &amp;ldquo;string&amp;rdquo; object in C language. From a perspective of data processing, a string is a contiguous sequence of characters ended with &#39;\0&amp;rsquo; or so-called NUL terminator. The serious properties about string had beed defined in C standard. For example, session 7.1 in C99 standard, it would be really gainful to read C standard carefully. Here I introduce some perperties we needed to know for writing C code.</description>
+      <description>Introduction There is no real primitive &amp;ldquo;string&amp;rdquo; object in C language. From a perspective of data processing, a string is a contiguous sequence of characters ended with &#39;\0&amp;rsquo; or so-called NUL terminator. The serious properties about string had beed defined in C standard. For example, session 7.1 in C99 standard, it would be really gainful to read C standard carefully. Here I introduce some properties we needed to know for writing C code.</description>
     </item>
     
     <item>

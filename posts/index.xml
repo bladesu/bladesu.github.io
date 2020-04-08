@@ -18,7 +18,7 @@
       
       <guid>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</guid>
       <description>A new post here: https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/
-I introduce about the some knowledge in C language for string processing here. Do you have some confusing problem about string in C? char *, string literal, char array, which one should I use in some case? If you have same problem, please read this article.</description>
+I introduce the some knowledge in C language for string processing here. Do you confuse about string in C? char *, string literal, char array, which one should I use in some case? If you have same problem, please read this article.</description>
     </item>
     
     <item>

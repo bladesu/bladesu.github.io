@@ -27,7 +27,7 @@
       <pubDate>Mon, 23 Mar 2020 23:09:24 +0800</pubDate>
       
       <guid>https://bladesu.github.io/learning/computer_languages/c_lang/confusing_concepts/pointer_to_char_and_string/</guid>
-      <description>Introduction There is no real primitive &amp;ldquo;string&amp;rdquo; object in C language. From a perspective of data processing, a string is a contiguous sequence of characters ended with &#39;\0&amp;rsquo; or so-called NUL terminator. The serious properties about string had beed defined in C standard. For example, session 7.1 in C99 standard, it would be really gainful to read C standard carefully. Here I introduce some perperties we needed to know for writing C code.</description>
+      <description>Introduction There is no real primitive &amp;ldquo;string&amp;rdquo; object in C language. From a perspective of data processing, a string is a contiguous sequence of characters ended with &#39;\0&amp;rsquo; or so-called NUL terminator. The serious properties about string had beed defined in C standard. For example, session 7.1 in C99 standard, it would be really gainful to read C standard carefully. Here I introduce some properties we needed to know for writing C code.</description>
     </item>
     
   </channel>
