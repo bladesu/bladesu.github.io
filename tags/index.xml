@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Apr 2020 15:08:07 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 17:28:42 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,36 @@
     <item>
       <title>c_language</title>
       <link>https://bladesu.github.io/tags/c_language/</link>
-      <pubDate>Tue, 07 Apr 2020 15:08:07 +0800</pubDate>
+      <pubDate>Thu, 30 Apr 2020 17:28:42 +0800</pubDate>
       
       <guid>https://bladesu.github.io/tags/c_language/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://bladesu.github.io/tags/linux/</link>
+      <pubDate>Thu, 30 Apr 2020 17:28:42 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mkstemp</title>
+      <link>https://bladesu.github.io/tags/mkstemp/</link>
+      <pubDate>Thu, 30 Apr 2020 17:28:42 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/tags/mkstemp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system_call</title>
+      <link>https://bladesu.github.io/tags/system_call/</link>
+      <pubDate>Thu, 30 Apr 2020 17:28:42 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/tags/system_call/</guid>
       <description></description>
     </item>
     

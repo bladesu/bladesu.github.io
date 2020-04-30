@@ -3,27 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</loc>
-    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+    <loc>https://bladesu.github.io/posts/2020/04/30/post_for_linux_system_call_mkstemp/</loc>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/</loc>
-    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/tags/c_language/</loc>
-    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/linux/</loc>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/mkstemp/</loc>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/posts/</loc>
-    <lastmod>2020-04-07T15:08:07+08:00</lastmod>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/system_call/</loc>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://bladesu.github.io/tags/</loc>
+    <lastmod>2020-04-30T17:28:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/learning/linux_app/fileio/system_call_mkstemp/</loc>
+    <lastmod>2020-04-30T16:00:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/learning/linux_app/</loc>
+    <lastmod>2020-04-30T15:46:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/posts/2020/04/07/post_for_c_string/</loc>
     <lastmod>2020-04-07T15:08:07+08:00</lastmod>
   </url>
   

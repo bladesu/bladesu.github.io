@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Blade Su">
+    <meta name="description" content="Reading, learning, and self-Satisfaction">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="System call:mkstemp, why it needs a char array as input."/>
+<meta name="twitter:description" content="Sometimes we need a temporary file to store data in our implementation. For development on linux platform, a convenient choice is writing a file under the folder /tmp. After reboot of OS, those files at least is not persist anymore. However, it needs more consideration to such a “temporary” file. For example, considering about uniqueness. It could be a bad idea that a hardcode file name for a program which could have multiple instances."/>
+
+    <meta property="og:title" content="System call:mkstemp, why it needs a char array as input." />
+<meta property="og:description" content="Sometimes we need a temporary file to store data in our implementation. For development on linux platform, a convenient choice is writing a file under the folder /tmp. After reboot of OS, those files at least is not persist anymore. However, it needs more consideration to such a “temporary” file. For example, considering about uniqueness. It could be a bad idea that a hardcode file name for a program which could have multiple instances." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bladesu.github.io/learning/linux_app/fileio/system_call_mkstemp/" />
+<meta property="article:published_time" content="2020-04-30T16:00:03+08:00" />
+<meta property="article:modified_time" content="2020-04-30T16:00:03+08:00" />
+
+
+    
+      <base href="https://bladesu.github.io/learning/linux_app/fileio/system_call_mkstemp/">
+    
+    <title>
+  System call:mkstemp, why it needs a char array as input. · Blade Su The Coder
+</title>
+
+    
+      <link rel="canonical" href="https://bladesu.github.io/learning/linux_app/fileio/system_call_mkstemp/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://bladesu.github.io/css/coder.min.ab11da33926aff1bbed738198c81361e84bf702098a3e97ed5b24126bde6c9ba.css" integrity="sha256-qxHaM5Jq/xu&#43;1zgZjIE2HoS/cCCYo&#43;l&#43;1bJBJr3mybo=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://bladesu.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.64.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://bladesu.github.io/">
+      Blade Su The Coder
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/learning/">Learning</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">System call:mkstemp, why it needs a char array as input.</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-04-30T16:00:03&#43;08:00'>
+                April 30, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://bladesu.github.io/tags/mkstemp/">mkstemp</a>
+      <span class="separator">•</span>
+    <a href="https://bladesu.github.io/tags/system_call/">system_call</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Sometimes we need a temporary file to store data in our implementation. For development on linux platform, a convenient choice is writing a file under the folder <strong>/tmp</strong>. After reboot of OS, those files at least is not persist anymore. However, it needs more consideration to such a “temporary” file. For example, considering about uniqueness. It could be a bad idea that a hardcode file name for a program which could have multiple instances.</p>
+<p>Here a useful system call is <strong>mkstemp()</strong>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#0f0;font-weight:bold">#</span><span style="color:#0f0;font-weight:bold">include</span> <span style="color:#0f0;font-weight:bold">&lt;stdlib.h&gt;</span><span style="color:#0f0;font-weight:bold">
+</span><span style="color:#0f0;font-weight:bold"></span><span style="color:#fff;font-weight:bold">int</span> mkstemp(<span style="color:#fff;font-weight:bold">char</span> *template);
+<span style="color:#007f7f">//Returns file descriptor on success, or –1 on error 
+</span></code></pre></div><p>You can make a get a open file descriptor by call this function with given a <strong>char array</strong> (<strong>template</strong>)ended with 6 “X” and ‘\0’. For example:<strong>&quot;/tmp/my_tempXXXXXX&rdquo;</strong>. Here I must emphasize this pointer again, it should be a <strong>char array</strong>. Or it will cause <strong>segmentation fault</strong> if it received a <strong>char pointer</strong> to <strong>string literal</strong>. It could be confused for people. Why? Let us look few lines of  ocde in <strong>posix</strong> source code as example.</p>
+<p><strong>Code : glibc/sysdeps/posix/tempname.c</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">...(skiped)
+Int
+__gen_tempname (<span style="color:#fff;font-weight:bold">char</span> *tmpl, <span style="color:#fff;font-weight:bold">int</span> suffixlen, <span style="color:#fff;font-weight:bold">int</span> flags, <span style="color:#fff;font-weight:bold">int</span> kind)
+  <span style="color:#fff;font-weight:bold">int</span> len;
+  <span style="color:#fff;font-weight:bold">char</span> *XXXXXX;
+...(skiped)
+<span style="color:#007f7f">/* This is where the Xs start.  */</span>
+XXXXXX = &amp;tmpl[len - <span style="color:#ff0;font-weight:bold">6</span> - suffixlen];
+<span style="color:#007f7f">/* Get some more or less random data.  */</span>
+RANDOM_BITS (value);
+value ^= (uint64_t)__getpid () &lt;&lt; <span style="color:#ff0;font-weight:bold">32</span>;
+<span style="color:#fff;font-weight:bold">for</span> (count = <span style="color:#ff0;font-weight:bold">0</span>; count &lt; attempts; value += <span style="color:#ff0;font-weight:bold">7777</span>, ++count)
+  {
+    uint64_t v = value;
+    <span style="color:#007f7f">/* Fill in the random bits.  */</span>
+    XXXXXX[<span style="color:#ff0;font-weight:bold">0</span>] = letters[v % <span style="color:#ff0;font-weight:bold">62</span>];
+    v /= <span style="color:#ff0;font-weight:bold">62</span>;
+    XXXXXX[<span style="color:#ff0;font-weight:bold">1</span>] = letters[v % <span style="color:#ff0;font-weight:bold">62</span>];
+    v /= <span style="color:#ff0;font-weight:bold">62</span>;
+    XXXXXX[<span style="color:#ff0;font-weight:bold">2</span>] = letters[v % <span style="color:#ff0;font-weight:bold">62</span>];
+    v /= <span style="color:#ff0;font-weight:bold">62</span>;
+    XXXXXX[<span style="color:#ff0;font-weight:bold">3</span>] = letters[v % <span style="color:#ff0;font-weight:bold">62</span>];
+    v /= <span style="color:#ff0;font-weight:bold">62</span>;
+    XXXXXX[<span style="color:#ff0;font-weight:bold">4</span>] = letters[v % <span style="color:#ff0;font-weight:bold">62</span>];
+    v /= <span style="color:#ff0;font-weight:bold">62</span>;
+    XXXXXX[<span style="color:#ff0;font-weight:bold">5</span>] = letters[v % <span style="color:#ff0;font-weight:bold">62</span>];
+...(skiped)
+
+</code></pre></div><p>Here <strong>*tmpl</strong> is the argument which is the given <strong>char array</strong> we talk above. A <strong>char array</strong> declared in our code should always located in the <strong>stack memory</strong>. And the data will be changed in this code by replacement with rundown bits. <strong>Finally it become the generated unique file name.</strong> If we call <strong>mkstemp()</strong> by giving it a pointer to string literal, it will absolutely cause a segmentation fault because the memory is located at <strong>DATA data segment</strong>. It is not changeable in the runtime.</p>
+<p>Finally, it should connect to another system call <strong>unlink()</strong> which will delete a file with a filename. The common usage with <strong>mkstemp</strong> is involved about the char array which is changed. This two system calls cooperate together with the <strong>char array</strong> and control the life-cycle of the temporary file. As the following code block, you can see a example in the code.</p>
+<p>From <a href="https://github.com/bladesu/linux_app_practice/blob/master/file_io/task_check_duplicated_fd.c">https://github.com/bladesu/linux_app_practice/blob/master/file_io/task_check_duplicated_fd.c</a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">...(skiped)
+    char template[] = &#34;/tmp/tempXXXXXX&#34;;
+    fd = mkstemp(template);
+...(skiped, do something with mkstemp())
+final:
+...(skiped)
+    if (template != NULL)
+        unlink(template);
+</code></pre></div><p><strong>Complementary material</strong></p>
+<p>Temporary files: RAM or disk? <a href="https://lwn.net/Articles/499410/">:link</a></p>
+<p><strong>Reference</strong></p>
+<p>Section 5.12, The Linux Programming Interface.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-bladesu-github-io-tech-blog-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>See the trend, stay calm.</p>
+    
+    
+      
+        © 2020
+      
+       Blade Su 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>
