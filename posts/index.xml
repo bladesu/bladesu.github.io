@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>Linux system calls introduction: mkstemp.</title>
-      <link>https://bladesu.github.io/posts/2020/04/30/post_for_linux_system_call_mkstemp/</link>
+      <title>Posix API introduction: mkstemp.</title>
+      <link>https://bladesu.github.io/posts/2020/04/30/post_for_linux_api_mkstemp/</link>
       <pubDate>Thu, 30 Apr 2020 17:28:42 +0800</pubDate>
       
-      <guid>https://bladesu.github.io/posts/2020/04/30/post_for_linux_system_call_mkstemp/</guid>
-      <description>A new post here: https://bladesu.github.io/learning/linux_app/fileio/system_call_mkstemp
-I start to introduce the some knowledge about system calls and application implementation on linux platform. Here we start with a convenient system call mkstemp. Any feedbask is welcome, thank you.</description>
+      <guid>https://bladesu.github.io/posts/2020/04/30/post_for_linux_api_mkstemp/</guid>
+      <description>A new post here: https://bladesu.github.io/learning/linux_app/fileio/api_mkstemp/
+I start to introduce the some knowledge about system calls, posix API and application implementation on linux platform. Here we start with a convenient posix API mkstemp. Any feedbask is welcome, thank you.</description>
     </item>
     
     <item>
