@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>posix on Blade Su The Coder</title>
-    <link>https://bladesu.github.io/tags/posix/</link>
-    <description>Recent content in posix on Blade Su The Coder</description>
+    <title>putenv on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/tags/putenv/</link>
+    <description>Recent content in putenv on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 08 May 2020 09:34:44 +0800</lastBuildDate>
     
-	<atom:link href="https://bladesu.github.io/tags/posix/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bladesu.github.io/tags/putenv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,15 +29,6 @@ Here is the result of my: Do not call putenv() with a pointer to an automatic va
       <guid>https://bladesu.github.io/learning/linux_app/process/auto_vara_n_putenv/</guid>
       <description>Recently I study the chapters in the book: The Linux Programming Interface, and make exercises in the end of every chapters. Here I get some extra information in a exercise to implement setenv() and unetenv() functionn using getenv() and putenv() in chapter 6. They are used to handling the environment variable within a process including adding or removing one. Here is the complete problem:
  (6.3) Implement setenv() and unsetenv() using getenv(), putenv(), and, where necessary, code that directly modifies environ.</description>
-    </item>
-    
-    <item>
-      <title>Posix API:mkstemp, why it needs a char array as input.</title>
-      <link>https://bladesu.github.io/learning/linux_app/fileio/api_mkstemp/</link>
-      <pubDate>Thu, 30 Apr 2020 16:00:03 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/learning/linux_app/fileio/api_mkstemp/</guid>
-      <description>Sometimes we need a temporary file to store data in our implementation. For development on linux platform, a convenient choice is writing a file under the folder /tmp. After reboot of OS, those files at least is not persist anymore. However, it needs more consideration to such a “temporary” file. For example, considering about uniqueness. It could be a bad idea that a hardcode file name for a program which could have multiple instances.</description>
     </item>
     
   </channel>

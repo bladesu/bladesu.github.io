@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Process on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/learning/linux_app/process/</link>
+    <description>Recent content in Process on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 May 2020 15:46:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/learning/linux_app/process/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Do not call putenv() with a pointer to an automatic variable as the argument</title>
+      <link>https://bladesu.github.io/learning/linux_app/process/auto_vara_n_putenv/</link>
+      <pubDate>Thu, 07 May 2020 18:01:18 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/linux_app/process/auto_vara_n_putenv/</guid>
+      <description>Recently I study the chapters in the book: The Linux Programming Interface, and make exercises in the end of every chapters. Here I get some extra information in a exercise to implement setenv() and unetenv() functionn using getenv() and putenv() in chapter 6. They are used to handling the environment variable within a process including adding or removing one. Here is the complete problem:
+ (6.3) Implement setenv() and unsetenv() using getenv(), putenv(), and, where necessary, code that directly modifies environ.</description>
+    </item>
+    
+  </channel>
+</rss>

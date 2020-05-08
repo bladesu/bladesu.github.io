@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Blade Su">
+    <meta name="description" content="Reading, learning, and self-Satisfaction">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Do not call putenv() with a pointer to an automatic variable as the argument"/>
+<meta name="twitter:description" content="Recently I study the chapters in the book: The Linux Programming Interface, and make exercises in the end of every chapters. Here I get some extra information in a exercise to implement setenv() and unetenv() functionn using getenv() and putenv() in chapter 6. They are used to handling the environment variable within a process including adding or removing one. Here is the complete problem:
+ (6.3) Implement setenv() and unsetenv() using getenv(), putenv(), and, where necessary, code that directly modifies environ."/>
+
+    <meta property="og:title" content="Do not call putenv() with a pointer to an automatic variable as the argument" />
+<meta property="og:description" content="Recently I study the chapters in the book: The Linux Programming Interface, and make exercises in the end of every chapters. Here I get some extra information in a exercise to implement setenv() and unetenv() functionn using getenv() and putenv() in chapter 6. They are used to handling the environment variable within a process including adding or removing one. Here is the complete problem:
+ (6.3) Implement setenv() and unsetenv() using getenv(), putenv(), and, where necessary, code that directly modifies environ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bladesu.github.io/learning/linux_app/process/auto_vara_n_putenv/" />
+<meta property="article:published_time" content="2020-05-07T18:01:18+08:00" />
+<meta property="article:modified_time" content="2020-05-07T18:01:18+08:00" />
+
+
+    
+      <base href="https://bladesu.github.io/learning/linux_app/process/auto_vara_n_putenv/">
+    
+    <title>
+  Do not call putenv() with a pointer to an automatic variable as the argument · Blade Su The Coder
+</title>
+
+    
+      <link rel="canonical" href="https://bladesu.github.io/learning/linux_app/process/auto_vara_n_putenv/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://bladesu.github.io/css/coder.min.ab11da33926aff1bbed738198c81361e84bf702098a3e97ed5b24126bde6c9ba.css" integrity="sha256-qxHaM5Jq/xu&#43;1zgZjIE2HoS/cCCYo&#43;l&#43;1bJBJr3mybo=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://bladesu.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://bladesu.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.64.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://bladesu.github.io/">
+      Blade Su The Coder
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/learning/">Learning</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://bladesu.github.io/contact/">Contact me</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Do not call putenv() with a pointer to an automatic variable as the argument</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-05-07T18:01:18&#43;08:00'>
+                May 7, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://bladesu.github.io/tags/posix/">posix</a>
+      <span class="separator">•</span>
+    <a href="https://bladesu.github.io/tags/process/">process</a>
+      <span class="separator">•</span>
+    <a href="https://bladesu.github.io/tags/putenv/">putenv</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Recently I study the chapters in the book: <strong>The Linux Programming Interface</strong>, and make exercises in the end of every chapters. Here I get some extra information in a exercise to implement setenv() and unetenv() functionn using getenv() and putenv() in chapter 6. They are used to handling the <strong>environment variable</strong> within a process including adding or removing one. Here is the complete problem:</p>
+<blockquote>
+<p>(6.3) Implement <strong>setenv()</strong> and <strong>unsetenv()</strong> using <strong>getenv()</strong>, <strong>putenv()</strong>, and, where necessary, code that directly modifies environ. Your version of <strong>unsetenv()</strong> should check to see whether there are multiple definitions of an environment variable, and remove them all (which is what the glibc version of <strong>unsetenv()</strong> does).</p>
+</blockquote>
+<p>First, we should see about the spec, to shorten the story, let us see the two main roles in this article:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">int</span> setenv(<span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *name, <span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *value, <span style="color:#fff;font-weight:bold">int</span> overwrite);
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">int</span> putenv(<span style="color:#fff;font-weight:bold">char</span> *string);
+</code></pre></div><p>These two functions could be included in &lt;stdlib.h&gt;, both can modify the environment list.  It seems to make a simple version of setenv() by wrapping putenv() and getenv(). I write a first version of setenv(), it contains some flow control with parsed input string.</p>
+<p>code: <strong>setenv1</strong>() link:<a href="https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c">https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c</a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">int</span> setenv1(<span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *name, <span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *value, <span style="color:#fff;font-weight:bold">int</span> overwrite)
+{
+    <span style="color:#007f7f">// check should the value be overwrite.
+</span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">char</span> *value_ori = getenv(name);
+    <span style="color:#fff;font-weight:bold">if</span> (value_ori != <span style="color:#fff;font-weight:bold">NULL</span> &amp;&amp; strcmp(value_ori, value) == <span style="color:#ff0;font-weight:bold">0</span>)
+        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+
+    <span style="color:#fff;font-weight:bold">char</span> str[strlen(name) + strlen(value) + <span style="color:#ff0;font-weight:bold">2</span>];
+
+    <span style="color:#fff;font-weight:bold">if</span> (sprintf(str, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s=%s</span><span style="color:#0ff;font-weight:bold">&#34;</span>, name, value) &lt; <span style="color:#ff0;font-weight:bold">0</span>)
+        printf(<span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">Fail to create string</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+
+    <span style="color:#fff;font-weight:bold">if</span> (value_ori)
+    {
+        <span style="color:#fff;font-weight:bold">if</span> (overwrite == <span style="color:#ff0;font-weight:bold">0</span> || putenv(str) != <span style="color:#ff0;font-weight:bold">0</span>)
+            <span style="color:#fff;font-weight:bold">return</span> -<span style="color:#ff0;font-weight:bold">1</span>;
+        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+    }
+    <span style="color:#fff;font-weight:bold">else</span>
+    {
+        <span style="color:#fff;font-weight:bold">if</span> (putenv(str) != <span style="color:#ff0;font-weight:bold">0</span>)
+            <span style="color:#fff;font-weight:bold">return</span> -<span style="color:#ff0;font-weight:bold">1</span>;
+        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+    }
+}
+</code></pre></div><p>However, it could be wrong. You will find the environment would disappear after insertion. After some try and error. I found it will disappear after the inserted name and value string (which is located in <strong>statck memory</strong> in version 1) was overwritten in <strong>stack</strong>. Here I examine it by write a recursive loop aimed to overwrite certain address. I use it to overwrite the target of address I get from <strong>getenv()</strong>. And the problem is reproducible now.</p>
+<p>code: <strong>stry_overwrite()</strong> link:<a href="https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c">https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c</a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">static</span> <span style="color:#fff;font-weight:bold">int</span> lc = <span style="color:#ff0;font-weight:bold">0</span>;
+<span style="color:#fff;font-weight:bold">static</span> <span style="color:#fff;font-weight:bold">int</span> loop_max = <span style="color:#ff0;font-weight:bold">1024</span>; <span style="color:#007f7f">// prevent endless loop.
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">void</span> try_overwrite(<span style="color:#fff;font-weight:bold">void</span> *p)
+{
+    <span style="color:#fff;font-weight:bold">int</span> temp = <span style="color:#ff0;font-weight:bold">0</span>;
+    <span style="color:#007f7f">// check this stack address is smaller than p.
+</span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">if</span> ((&amp;temp) &lt; (<span style="color:#fff;font-weight:bold">int</span> *)p)
+        <span style="color:#fff;font-weight:bold">return</span>;
+
+    <span style="color:#fff;font-weight:bold">if</span> (lc &lt; loop_max)
+    {
+        lc++;
+        try_overwrite(p);
+    }
+}
+</code></pre></div><p>And then I make other version to fix the problem by assign a <strong>heap memory</strong> to put the name=value string. However, it probably induce <strong>memory leak</strong>.</p>
+<p>ode: <strong>stry_overwrite()</strong> link:<a href="https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c">https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c</a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">int</span> setenv2(<span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *name, <span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *value, <span style="color:#fff;font-weight:bold">int</span> overwrite)
+{
+    <span style="color:#007f7f">// check should the value be overwrite.
+</span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">char</span> *value_ori = getenv(name);
+    <span style="color:#fff;font-weight:bold">if</span> (value_ori != <span style="color:#fff;font-weight:bold">NULL</span> &amp;&amp; strcmp(value_ori, value) == <span style="color:#ff0;font-weight:bold">0</span>)
+        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+
+    <span style="color:#fff;font-weight:bold">char</span> *str = malloc(strlen(name) + strlen(value) + <span style="color:#ff0;font-weight:bold">2</span>);
+    <span style="color:#fff;font-weight:bold">if</span> (str == <span style="color:#fff;font-weight:bold">NULL</span> || sprintf(str, <span style="color:#0ff;font-weight:bold"></span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">%s=%s</span><span style="color:#0ff;font-weight:bold">&#34;</span>, name, value) &lt; <span style="color:#ff0;font-weight:bold">0</span>)
+    {
+        errno = ENOMEM;
+        <span style="color:#fff;font-weight:bold">return</span> -<span style="color:#ff0;font-weight:bold">1</span>;
+    }
+
+    <span style="color:#fff;font-weight:bold">if</span> (value_ori)
+    {
+        <span style="color:#fff;font-weight:bold">if</span> (overwrite == <span style="color:#ff0;font-weight:bold">0</span> || putenv(str) != <span style="color:#ff0;font-weight:bold">0</span>)
+            <span style="color:#fff;font-weight:bold">return</span> -<span style="color:#ff0;font-weight:bold">1</span>;
+        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+    }
+    <span style="color:#fff;font-weight:bold">else</span>
+    {
+        <span style="color:#fff;font-weight:bold">if</span> (putenv(str) != <span style="color:#ff0;font-weight:bold">0</span>)
+            <span style="color:#fff;font-weight:bold">return</span> -<span style="color:#ff0;font-weight:bold">1</span>;
+        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+    }
+}
+</code></pre></div><p>Finally, I found it is not a new problem. I found it is noted in <strong>SEI CERT C Coding Standard</strong> about POSIX part. It clearly indicated that getenv just collect the pointer to the name=value string rather than coping it. That is cool, I should learn it early to save my time, but I gain something in this try and error process.</p>
+<p>Reference:</p>
+<ul>
+<li>man page for setenv: <a href="http://man7.org/linux/man-pages/man3/setenv.3.html">http://man7.org/linux/man-pages/man3/setenv.3.html</a></li>
+<li>man page for putenv: <a href="http://man7.org/linux/man-pages/man3/putenv.3.html">http://man7.org/linux/man-pages/man3/putenv.3.html</a></li>
+<li>man page for getenv: <a href="http://man7.org/linux/man-pages/man3/getenv.3.html">http://man7.org/linux/man-pages/man3/getenv.3.html</a></li>
+<li>man page for unsetenv: <a href="http://man7.org/linux/man-pages/man3/unsetenv.3.html">http://man7.org/linux/man-pages/man3/unsetenv.3.html</a></li>
+<li>SEI CERT C Coding Standard: <a href="https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard">https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-bladesu-github-io-tech-blog-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>See the trend, stay calm.</p>
+    
+    
+      
+        © 2020
+      
+       Blade Su 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>

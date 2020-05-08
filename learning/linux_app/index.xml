@@ -11,14 +11,5 @@
 	<atom:link href="https://bladesu.github.io/learning/linux_app/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Posix API:mkstemp, why it needs a char array as input.</title>
-      <link>https://bladesu.github.io/learning/linux_app/fileio/api_mkstemp/</link>
-      <pubDate>Thu, 30 Apr 2020 16:00:03 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/learning/linux_app/fileio/api_mkstemp/</guid>
-      <description>Sometimes we need a temporary file to store data in our implementation. For development on linux platform, a convenient choice is writing a file under the folder /tmp. After reboot of OS, those files at least is not persist anymore. However, it needs more consideration to such a “temporary” file. For example, considering about uniqueness. It could be a bad idea that a hardcode file name for a program which could have multiple instances.</description>
-    </item>
-    
   </channel>
 </rss>
