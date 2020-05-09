@@ -180,7 +180,7 @@
         <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
     }
 }
-</code></pre></div><p>However, it could be wrong. You will find the environment would disappear after insertion. After some try and error. I found it will disappear after the inserted name and value string (which is located in <strong>statck memory</strong> in version 1) was overwritten in <strong>stack</strong>. Here I examine it by write a recursive loop aimed to overwrite certain address. I use it to overwrite the target of address I get from <strong>getenv()</strong>. And the problem is reproducible now.</p>
+</code></pre></div><p>However, it could be wrong. You may find the environment would disappear after insertion (not absolutely). After some try and error. I found it will disappear after the inserted name and value string (which is located in <strong>statck memory</strong> in version 1) was overwritten in <strong>stack</strong>. Here I examine it by write a recursive loop aimed to overwrite certain address. I use it to overwrite the target of address I get from <strong>getenv()</strong>. And the problem is reproducible now.</p>
 <p>code: <strong>stry_overwrite()</strong> link:<a href="https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c">https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c</a></p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">static</span> <span style="color:#fff;font-weight:bold">int</span> lc = <span style="color:#ff0;font-weight:bold">0</span>;
 <span style="color:#fff;font-weight:bold">static</span> <span style="color:#fff;font-weight:bold">int</span> loop_max = <span style="color:#ff0;font-weight:bold">1024</span>; <span style="color:#007f7f">// prevent endless loop.
@@ -198,7 +198,7 @@
     }
 }
 </code></pre></div><p>And then I make other version to fix the problem by assign a <strong>heap memory</strong> to put the name=value string. However, it probably induce <strong>memory leak</strong>.</p>
-<p>ode: <strong>stry_overwrite()</strong> link:<a href="https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c">https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c</a></p>
+<p>ode: <strong>try_overwrite()</strong> link:<a href="https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c">https://github.com/bladesu/linux_app_practice/blob/master/process/impl_setenv_unsetenv.c</a></p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#fff;font-weight:bold">int</span> setenv2(<span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *name, <span style="color:#fff;font-weight:bold">const</span> <span style="color:#fff;font-weight:bold">char</span> *value, <span style="color:#fff;font-weight:bold">int</span> overwrite)
 {
     <span style="color:#007f7f">// check should the value be overwrite.
