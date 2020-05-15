@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>glic on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/tags/glic/</link>
+    <description>Recent content in glic on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 15 May 2020 14:28:30 +0800</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/tags/glic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Simple implementation of malloc and free with sbrk system call.</title>
+      <link>https://bladesu.github.io/learning/linux_app/memory/impl_malloc_free_v1/</link>
+      <pubDate>Fri, 15 May 2020 14:28:30 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/linux_app/memory/impl_malloc_free_v1/</guid>
+      <description>To get familiar with heap memory operation in linux, I try to implement a easy one of malloc and free with leverage of system call sbrk().
+void *malloc(size_t size); // return pointer to allocted heap memory with assigned size. void free(void *ptr); // release the allocated heap memory with *ptr. void * sbrk(intptr_t incr); // return prior program break. First, we start the topic with some notes about sbrk:
+ The current value of the program break may be determined by calling sbrk(0).</description>
+    </item>
+    
+  </channel>
+</rss>
