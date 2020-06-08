@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Application Porting on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/learning/devops/cross_compilation/porting_app/</link>
+    <description>Recent content in Application Porting on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Jun 2020 21:51:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/learning/devops/cross_compilation/porting_app/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An cross-compiling exercise: porting Qt Application to ARM-base environment with docker environment. </title>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/porting_app/qt_porting_orange_pi/</link>
+      <pubDate>Mon, 08 Jun 2020 22:01:29 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/porting_app/qt_porting_orange_pi/</guid>
+      <description>Recently I finish a exercise that porting Qt-based application from my development environment (Mac OS 10.13.6) to an ARM-based environment(Orange Pi with sunxi H6 SoC). Moreover, I create a docker container as cross-compiling environment with assigned toolchain for ARM.
+If we want to run a Qt application on a machine with ARM CPU, we need to prepare built the libraries for Qt runtime. Not only the libraries but the application should be built with the ARM toolchain.</description>
+    </item>
+    
+  </channel>
+</rss>
