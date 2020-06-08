@@ -6,10 +6,19 @@
     <description>Recent content on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jun 2020 22:01:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2020 00:38:08 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Porting Qt libraries and application to ARM-based environment,</title>
+      <link>https://bladesu.github.io/posts/2020/06/08/qt_porting/</link>
+      <pubDate>Tue, 09 Jun 2020 00:38:08 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/posts/2020/06/08/qt_porting/</guid>
+      <description>Here I make a practice for application porting to ARM-based environment with leverage of docker container as build platform. This post contains not only application porting but also the Qt library. Finally I demonstrate the GUI application on a target platform(OrangePi, with sunxi H6 CPU) via VNC connection. Here is the link https://bladesu.github.io/learning/devops/cross_compilation/porting_app/qt_porting_orange_pi/.</description>
+    </item>
     
     <item>
       <title>An cross-compiling exercise: porting Qt Application to ARM-base environment with docker environment. </title>
