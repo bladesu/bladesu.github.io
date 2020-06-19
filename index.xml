@@ -252,5 +252,25 @@ Since I had connected to internect, I got a lot of knowlege from enormous amount
 So I start this blog to put my idea and information collected. If I take something wrong, or you gain from something here. Please give me feedback, thank you.</description>
     </item>
     
+    <item>
+      <title>About Blade Su</title>
+      <link>https://bladesu.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bladesu.github.io/about/</guid>
+      <description>Blade is a software engineer. He have been focus on text-searching and distributed data flow design and implementation for over three year. Before that, he had over three year experiment to capture 3 dimensional object rotation and position features with leverage of computer vision until he finished his physic master degree. Recently he focus on his own projects with more fundamental engineering detail about OS and embedded system developments.
+Between his daily works, he is crazy about bouldering and playing guitar.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://bladesu.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bladesu.github.io/contact/</guid>
+      <description>You can follow me with following social media, or you can send me a mail at bladesu0526@gmail.com
+ https://www.linkedin.com/in/bladesu/ https://github.com/bladesu/  </description>
+    </item>
+    
   </channel>
 </rss>
