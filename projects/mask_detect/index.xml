@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>A device to detect whether people do wear masks in real-time. on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/projects/mask_detect/</link>
+    <description>Recent content in A device to detect whether people do wear masks in real-time. on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/projects/mask_detect/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Contents(Read Me First)</title>
+      <link>https://bladesu.github.io/projects/mask_detect/contents/</link>
+      <pubDate>Fri, 19 Jun 2020 17:28:24 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/projects/mask_detect/contents/</guid>
+      <description>Goal: Since the end of 2019, the Coronavirus pandemic hurt millions of people and cause panic around people. It had been reported that wearing mask to cover months could protect people from infections transmitted by respiratory droplets. So I think it is a good idea to develop a real time alarming device which could be sent to a public gate like train station or airport to help passenger or supervisor to remind people should wear their mask proper or kick out someone is not willing to wear a mask.</description>
+    </item>
+    
+    <item>
+      <title>Stage 1: try yolo algorithm object detection</title>
+      <link>https://bladesu.github.io/projects/mask_detect/v0/</link>
+      <pubDate>Fri, 19 Jun 2020 17:28:24 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/projects/mask_detect/v0/</guid>
+      <description>This project should be overcome the process of recognition should be real-time. And fortunately we have the image data provided on Kaggle: https://www.kaggle.com/vtech6/medical-masks-dataset/data including images and classification by person. It contains a good or poor mask wearing information in the data set.
+And then I try to apply yolo v3, which is a proven model with object detection that has high speed and enough quality. Here is the script I deploy on Colab (a free computing resource provided Google) https://github.</description>
+    </item>
+    
+  </channel>
+</rss>
