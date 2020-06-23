@@ -27,7 +27,7 @@ https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0001_cmak
       <pubDate>Tue, 23 Jun 2020 16:20:22 +0800</pubDate>
       
       <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</guid>
-      <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  Try to make cross-compiling environment with library directory linked to target platform.  Test  </description>
+      <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  Try to make cross-compiling environment with library directory linked to target platform.  Apply cmake and pkg-config with mounted target root file system  </description>
     </item>
     
     <item>
