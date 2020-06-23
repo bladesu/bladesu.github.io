@@ -6,10 +6,29 @@
     <description>Recent content on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2020 16:19:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2020 16:39:44 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Try to make cross-compiling environment with library directory linked to target platform.</title>
+      <link>https://bladesu.github.io/posts/2020/06/23/cmake_sshs_opencv/</link>
+      <pubDate>Tue, 23 Jun 2020 16:39:44 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/posts/2020/06/23/cmake_sshs_opencv/</guid>
+      <description>Recently I try to make cross-compiling environment with library directory linked to target platform. In the end, not all library is recognized by CMake, however, it is a light-weight approach to build a application with cross-compiling.
+https://bladesu.github.io/learning/devops/cross_compilation/dockerized/0001_cmake_sshfs_opencv/</description>
+    </item>
+    
+    <item>
+      <title>Contents(Read Me First)</title>
+      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</link>
+      <pubDate>Tue, 23 Jun 2020 16:20:22 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</guid>
+      <description>Docker images and container deployment for multiple CPU architecture developments.  A first glance for ARM docker container building and running  Try to make cross-compiling environment with library directory linked to target platform.  Test  </description>
+    </item>
     
     <item>
       <title>Apply cmake and pkg-config with mounted target root file system</title>
@@ -21,17 +40,6 @@
 This is a project that I try to make a cross-compile environment which link to libraries of target’s platform with sshfs in a light-weight docker container. I try to compile OpenCV 3.4.10 for the the target board PYNQ-Z2 with Xilinx XC7Z020-1CLG400C SOC.
 First, I try to dig the toolchain applied in the board by gcc -v
 xilinx@pynq:/usr/local/bin$ gcc -v Using built-in specs. COLLECT_GCC=gcc COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/7/lto-wrapper Target: arm-linux-gnueabihf Configured with: .</description>
-    </item>
-    
-    <item>
-      <title>Contents(Read Me First)</title>
-      <link>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</link>
-      <pubDate>Tue, 23 Jun 2020 16:19:22 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/learning/devops/cross_compilation/dockerized/contents/</guid>
-      <description>Docker images and container deployment for multiple CPU architecture developments.   A first glance for ARM docker container building and running
-  Test
-  </description>
     </item>
     
     <item>
