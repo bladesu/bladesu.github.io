@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bladesu.github.io/projects/mask_detect/</loc>
-    <lastmod>2020-06-26T13:10:22+08:00</lastmod>
+    <loc>https://bladesu.github.io/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://bladesu.github.io/</loc>
+    <loc>https://bladesu.github.io/posts/2020/06/26/project_mask_detect_v1/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/open_cv/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/posts/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/pynq/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/tags/yolo/</loc>
+    <lastmod>2020-06-26T15:04:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bladesu.github.io/projects/mask_detect/</loc>
     <lastmod>2020-06-26T13:10:22+08:00</lastmod>
   </url>
   
@@ -18,27 +48,7 @@
   </url>
   
   <url>
-    <loc>https://bladesu.github.io/tags/open_cv/</loc>
-    <lastmod>2020-06-26T13:10:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/tags/pynq/</loc>
-    <lastmod>2020-06-26T13:10:22+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://bladesu.github.io/projects/mask_detect/v1/</loc>
-    <lastmod>2020-06-26T13:10:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/tags/</loc>
-    <lastmod>2020-06-26T13:10:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/tags/yolo/</loc>
     <lastmod>2020-06-26T13:10:22+08:00</lastmod>
   </url>
   
@@ -59,11 +69,6 @@
   
   <url>
     <loc>https://bladesu.github.io/tags/linaro/</loc>
-    <lastmod>2020-06-23T16:39:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://bladesu.github.io/posts/</loc>
     <lastmod>2020-06-23T16:39:44+08:00</lastmod>
   </url>
   
