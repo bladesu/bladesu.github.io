@@ -6,7 +6,7 @@
     <description>Recent content in A device to detect whether people do wear masks in real-time. on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2020 13:10:22 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/projects/mask_detect/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,20 @@
     <item>
       <title>Contents(Read Me First)</title>
       <link>https://bladesu.github.io/projects/mask_detect/contents/</link>
-      <pubDate>Fri, 19 Jun 2020 17:28:24 +0800</pubDate>
+      <pubDate>Fri, 26 Jun 2020 13:10:22 +0800</pubDate>
       
       <guid>https://bladesu.github.io/projects/mask_detect/contents/</guid>
       <description>Goal: Since the end of 2019, the Coronavirus pandemic hurt millions of people and cause panic around people. It had been reported that wearing mask to cover months could protect people from infections transmitted by respiratory droplets. So I think it is a good idea to develop a real time alarming device which could be sent to a public gate like train station or airport to help passenger or supervisor to remind people should wear their mask proper or kick out someone is not willing to wear a mask.</description>
+    </item>
+    
+    <item>
+      <title>Stage 2: Deploy yolo v3 to PYNQ-Z2 development board with leverage to calculatipn power CPU.</title>
+      <link>https://bladesu.github.io/projects/mask_detect/v1/</link>
+      <pubDate>Fri, 26 Jun 2020 13:10:22 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/projects/mask_detect/v1/</guid>
+      <description>Here I try to deploy the yolo v3 model inference to a development board. I choose the board called PYNQ-Z2. It contains a ZYNQ XC7Z020-1CLG400C SOC designed by xilinx. We can use the dual-core Cortex-A9 processor or FPGA inside as the solution to inference our deep learning model. Also it contains a lot of peripheral to communicate other devices. More detail can be referred to http://www.tul.com.tw/ProductsPYNQ-Z2.html.
+Deploying the model to FPGA is a good idea but a rather complicated approach.</description>
     </item>
     
     <item>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>open_cv on Blade Su The Coder</title>
+    <link>https://bladesu.github.io/tags/open_cv/</link>
+    <description>Recent content in open_cv on Blade Su The Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 26 Jun 2020 13:10:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://bladesu.github.io/tags/open_cv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Stage 2: Deploy yolo v3 to PYNQ-Z2 development board with leverage to calculatipn power CPU.</title>
+      <link>https://bladesu.github.io/projects/mask_detect/v1/</link>
+      <pubDate>Fri, 26 Jun 2020 13:10:22 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/projects/mask_detect/v1/</guid>
+      <description>Here I try to deploy the yolo v3 model inference to a development board. I choose the board called PYNQ-Z2. It contains a ZYNQ XC7Z020-1CLG400C SOC designed by xilinx. We can use the dual-core Cortex-A9 processor or FPGA inside as the solution to inference our deep learning model. Also it contains a lot of peripheral to communicate other devices. More detail can be referred to http://www.tul.com.tw/ProductsPYNQ-Z2.html.
+Deploying the model to FPGA is a good idea but a rather complicated approach.</description>
+    </item>
+    
+  </channel>
+</rss>

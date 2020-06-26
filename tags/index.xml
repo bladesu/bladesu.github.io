@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Blade Su The Coder</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2020 16:39:44 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2020 13:10:22 +0800</lastBuildDate>
     
 	<atom:link href="https://bladesu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>open_cv</title>
+      <link>https://bladesu.github.io/tags/open_cv/</link>
+      <pubDate>Fri, 26 Jun 2020 13:10:22 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/tags/open_cv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pynq</title>
+      <link>https://bladesu.github.io/tags/pynq/</link>
+      <pubDate>Fri, 26 Jun 2020 13:10:22 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/tags/pynq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yolo</title>
+      <link>https://bladesu.github.io/tags/yolo/</link>
+      <pubDate>Fri, 26 Jun 2020 13:10:22 +0800</pubDate>
+      
+      <guid>https://bladesu.github.io/tags/yolo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>arm</title>
@@ -48,15 +75,6 @@
     </item>
     
     <item>
-      <title>pynq</title>
-      <link>https://bladesu.github.io/tags/pynq/</link>
-      <pubDate>Tue, 23 Jun 2020 16:39:44 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/tags/pynq/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>deep_learning</title>
       <link>https://bladesu.github.io/tags/deep_learning/</link>
       <pubDate>Fri, 19 Jun 2020 18:29:11 +0800</pubDate>
@@ -71,15 +89,6 @@
       <pubDate>Fri, 19 Jun 2020 18:29:11 +0800</pubDate>
       
       <guid>https://bladesu.github.io/tags/embedded/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>yolo</title>
-      <link>https://bladesu.github.io/tags/yolo/</link>
-      <pubDate>Fri, 19 Jun 2020 18:29:11 +0800</pubDate>
-      
-      <guid>https://bladesu.github.io/tags/yolo/</guid>
       <description></description>
     </item>
     
